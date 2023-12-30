@@ -25,15 +25,18 @@
       </button>
       <div class="hidden w-full md:block md:w-auto" id="navbar-default">
         <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
-          <li><a href="/" class="text-slate-100 hover:text-red-500">Home</a></li>
-          <li><a href="/about/" class="text-slate-100 hover:text-red-500">About</a></li>
-          <li><a href="/workouts/" class="text-slate-100 hover:text-red-500">Workouts</a></li>
+          <li><a href="/" class="text-slate-100 hover:text-red-500 transition-colors duration-300">Home</a></li>
+          <li><a href="/about/" class="text-slate-100 hover:text-red-500 transition-colors duration-300">About</a></li>
+          <li><a href="/workouts/" class="text-slate-100 hover:text-red-500 transition-colors duration-300">Workouts</a></li>
 
             <% if user_signed_in? %>
-              <li><%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "text-slate-100 hover:text-red-500" %></li>
+              <li><%= button_to "Sign out", destroy_user_session_path, method: :delete, 
+                class: "text-slate-100 hover:text-red-500 transition-colors duration-300" %></li>
             <% else %>
-              <li><%= link_to "Sign in", new_user_session_path, class: "text-slate-100 hover:text-red-500" %></li>
-              <li><%= link_to "Sign up", new_user_registration_path, class: "text-slate-100 hover:text-red-500" %></li>
+              <li><%= link_to "Sign in", new_user_session_path, 
+                class: "text-slate-100 hover:text-red-500 transition-colors duration-300" %></li>
+              <li><%= link_to "Sign up", new_user_registration_path, 
+                class: "text-slate-100 hover:text-red-500 transition-colors duration-300" %></li>
             <% end %>
         </ul>
       </div>
