@@ -4,6 +4,12 @@ class WorkoutsController < ApplicationController
     @workouts = current_user.workouts
   end
 
+  def destroy
+    @workout = Workout.find(params[:id])
+    @workout.destroy()
+  end
+
+
   def new
     @workout = Workout.new
   end
