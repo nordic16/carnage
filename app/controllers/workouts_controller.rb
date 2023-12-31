@@ -1,6 +1,7 @@
 class WorkoutsController < ApplicationController
   before_action :authenticate_user!
   def main
+    @workouts = current_user.workouts
   end
 
   def new
@@ -8,10 +9,14 @@ class WorkoutsController < ApplicationController
   end
 
   def create
-    @workout = Workout.new(workouts_params)
+    @workout = current_user.workouts.new(workouts_params)
     if @workout.save
-      redirect_to workouts_path(@workout)
+      redirect_to workout_path(@workout)
     end
+  end
+
+  def show
+    @workout = Workout.find(:id)
   end
 
   def workouts_params
