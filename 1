@@ -1,16 +1,3 @@
-<div class="md:container px-4 mx-auto">
-  <h1 class="text-6xl font-bold text-slate-100 text-center">Workouts</h1>
-  
-  <div class="grid grid-flow-col gap-4 mx-auto">
-    <% @workouts.each do |workout| %>
-      <div class="max-w-md my-4 bg-slate-900 rounded-b-lg">
-        <div class="bg-red-500 rounded-t-lg text-center font-bold text-slate-100"><%= workout.title %></div>
-        <p class="m-1 text-slate-100">Bro made an empty workout :skull:</p>  
-      </div>
-    <% end %>
-  </div>
-
-  <div class="md:container p-16 mx-auto text-center">
-    <%= link_to "+ New", new_workout_path, class: "text-slate-100 text-4xl font-bold px-4 py-2 bg-red-500 rounded-full" %>
-  </div>
+<div class="md:container px-auto px-4">
+  <p class="text-slate-100 text-4xl font-extrabold text-center"><%= @workout.title %></p>
 </div>
