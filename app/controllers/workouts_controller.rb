@@ -1,12 +1,11 @@
 class WorkoutsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :find
-  def main
+  before_action :authenticate_user!, :find
+  def index
     @workouts = current_user.workouts
   end
 
   def destroy
-    @workout.destroy()
+    @workout.destroy
     redirect_to workouts_path
   end
 

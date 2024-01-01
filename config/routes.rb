@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   devise_for :users
   get 'welcome/index'
   get '/about', to: "welcome#about"
-  get '/workouts', to: "workouts#main"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :workouts
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
