@@ -3,10 +3,14 @@
   
   <div class="grid grid-flow-col gap-4 mx-auto">
     <% @workouts.each do |workout| %>
-      <div class="max-w-md my-4 bg-slate-900 rounded-b-lg">
-        <div class="bg-red-500 rounded-t-lg text-center font-bold text-slate-100"><%= workout.title %></div>
+      <div class="max-w-md my-4 bg-slate-900 rounded-b-lg text-center">
+        <p class="bg-red-500 rounded-t-lg font-bold text-slate-100"><%= workout.title %></p>
         <p class="m-1 text-slate-100">Bro made an empty workout :skull:</p>  
-        <%= button_to "Delete", workout_path(workout), method: :delete  %>
+
+        <div class="inline-flex">
+        <%= button_to "Edit", workout_path(workout), method: :delete, class: "text-slate-100 px-8" %>
+        <%= button_to "Delete", workout_path(workout), method: :delete, class: "text-red-500 hover:text-red-700 transition-colors duration-300  px-8" %>
+        </div>
       </div>
     <% end %>
   </div>
