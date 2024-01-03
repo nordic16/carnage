@@ -23,6 +23,7 @@ class WorkoutsController < ApplicationController
   end
 
   def edit
+    if current_user.workouts.index(@workout).nil? then not_found!("Not found") end
   end
 
   def update
@@ -40,4 +41,9 @@ class WorkoutsController < ApplicationController
       @workout = Workout.find(params[:id])
     end
   end
+
+  def not_found!(msg)
+    raise ActionController::RoutingError.new(msg)
+  end
+
 end
