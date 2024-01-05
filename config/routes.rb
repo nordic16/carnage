@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :users
   get 'welcome/index'
   get '/about', to: "welcome#about"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -10,4 +9,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "welcome#index"
+  devise_for :users, :controllers => { registrations: 'users/registrations' }
 end

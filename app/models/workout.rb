@@ -1,4 +1,4 @@
 class Workout < ApplicationRecord
   validates :title, presence: true
-  has_one :user
+  belongs_to :user
 end

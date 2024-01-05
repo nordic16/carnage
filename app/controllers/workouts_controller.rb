@@ -9,7 +9,6 @@ class WorkoutsController < ApplicationController
     redirect_to workouts_path
   end
 
-
   def new
     @workout = Workout.new
   end
@@ -23,7 +22,8 @@ class WorkoutsController < ApplicationController
   end
 
   def edit
-    if current_user.workouts.index(@workout).nil? then not_found!("Not found") end
+    print(@workout.user)
+    if current_user != @workout.user then not_found!("Not found") end
   end
 
   def update
