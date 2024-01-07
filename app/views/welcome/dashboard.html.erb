@@ -1,0 +1,15 @@
+<div class="md:container mx-auto text-center">
+  <p class="text-4xl text-slate-100 font-extrabold text-center">Your profile, <%= current_user.username %></p>
+
+  <div class="grid grid-rows-3 grid-flow-col gap-4 my-5">
+    <div class="max-w-sm rounded-xl overflow-hidden shadow-lg bg-white">
+      <!-- <img class="w-full" src="/img/card-top.jpg" alt="Sunset in the mountains"> -->
+      <div class="px-6 py-4">
+        <div class="font-bold text-xl mb-2">So far, you've got</div>
+        <p class="text-gray-700 text-center text-3xl font-extrabold"><%= current_user.workouts.count %> workouts</p>
+        <p>Keep up the good work.</p>
+      </div>
+    </div>
+  </div>
+  <%= link_to "Edit profile", edit_user_registration_path, class: "text-slate-100 text-2xl font-bold px-4 py-2 bg-red-500 rounded-full" %>
+</div>

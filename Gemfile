@@ -69,3 +69,4 @@ end
 gem "tailwindcss-rails", "~> 2.1"
 
 gem "devise"
+gem "view_component"
