@@ -14,3 +14,6 @@
  </html>
 *= require_self
  */
+.navbar-component {
+  font-size: 18px;
+}
