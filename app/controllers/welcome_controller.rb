@@ -6,5 +6,6 @@ class WelcomeController < ApplicationController
   end
 
   def dashboard
+    @workouts = current_user.workouts
   end
 end
