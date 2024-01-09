@@ -1,7 +1,7 @@
 <div class="md:container mx-auto">
   <p class="text-4xl text-slate-100 font-extrabold">Your profile, <%= current_user.username %></p>
 
-  <div class="inline-flex pl-10">
+  <div class="inline-flex pl-10 mx-auto">
     <div class="grid grid-rows-3 grid-flow-col gap-4 my-5">
       <div class="max-w-sm rounded-xl overflow-hidden shadow-lg bg-white">
         <!-- <img class="w-full" src="/img/card-top.jpg" alt="Sunset in the mountains"> -->
@@ -14,10 +14,10 @@
     </div>
   </div>
   <p class="text-slate-100 text-4xl font-extrabold ">Workout History</p>
-  <div class="grid grid-cols-3 max-w-sm pl-10">
-    <%= @workouts.each do |workout| %>
+  <div class="grid grid-cols-3 pl-10">
+    <% @workouts.each do |workout| %>
       <p class="text-slate-100"><%= workout.title %></p>
-      <p class="text-slate-100"><%= workout.created_at %></p>
+      <p class="text-slate-100"><%= workout.created_at.strftime("%A, %d/%m/%Y") %></p>
     <% end %>
 
   </div>
