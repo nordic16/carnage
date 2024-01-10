@@ -1,25 +1,14 @@
-<div class="md:container mx-auto">
-  <p class="text-4xl text-slate-100 font-extrabold">Your profile, <%= current_user.username %></p>
-
-  <div class="inline-flex pl-10 mx-auto">
-    <div class="grid grid-rows-3 grid-flow-col gap-4 my-5">
-      <div class="max-w-sm rounded-xl overflow-hidden shadow-lg bg-white">
-        <!-- <img class="w-full" src="/img/card-top.jpg" alt="Sunset in the mountains"> -->
-        <div class="px-6 py-4">
-          <div class="font-bold text-xl mb-2">So far, you've got</div>
-          <p class="text-gray-700 text-center text-3xl font-extrabold"><%= current_user.workouts.count %> workouts</p>
-          <p>Keep up the good work.</p>
-        </div>
-      </div>
-    </div>
+<div class="md:container">
+  <div class="text-slate-100 inline-flex items-center">
+    <img class="object-scale-down h-20 w-20 rounded-full mr-3" src="https://i.pinimg.com/564x/b1/be/8f/b1be8fe6cd9e67ae26a480a1040c3733.jpg"></img>
+    <p class="text-4xl text-slate-100 font-extrabold text-center"><%= current_user.username %></p>
   </div>
-  <p class="text-slate-100 text-4xl font-extrabold ">Workout History</p>
-  <div class="grid grid-cols-3 pl-10">
-    <% @workouts.each do |workout| %>
-      <p class="text-slate-100"><%= workout.title %></p>
-      <p class="text-slate-100"><%= workout.created_at.strftime("%A, %d/%m/%Y") %></p>
-    <% end %>
+  <br>
 
+  <p class="text-4xl mt-3 font-extrabold text-slate-100">Statistics</p> 
+  <div class="grid grid-cols-3 grid-flow-col my-5 mx-auto">
+    <%= render(StatisticsViewComponent.new(topText: "So far, you've got", midText:"#{current_user.workouts.count}", bottomText: "Keep up the good work.")) %>
+    <%= render(StatisticsViewComponent.new(fg:"bg-red-400", topText: "Weekly volume", midText:"#{current_user.workouts.count}", bottomText: "Some day you'll be able to lift a black hole!")) %>
+    <%= render(StatisticsViewComponent.new(topText: "Weekly hard sets", midText:"[weekly hard sets]", bottomText: "\"5 MORE REPS - Tom Platz\"")) %>
   </div>
-</div>
 
