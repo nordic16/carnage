@@ -5,10 +5,20 @@
   </div>
   <br>
 
-  <p class="text-4xl mt-3 font-extrabold text-slate-100">Statistics</p> 
-  <div class="grid grid-cols-3 grid-flow-col my-5 mx-auto">
-    <%= render(StatisticsViewComponent.new(topText: "So far, you've got", midText:"#{current_user.workouts.count}", bottomText: "Keep up the good work.")) %>
-    <%= render(StatisticsViewComponent.new(fg:"bg-red-400", topText: "Weekly volume", midText:"#{current_user.workouts.count}", bottomText: "Some day you'll be able to lift a black hole!")) %>
-    <%= render(StatisticsViewComponent.new(topText: "Weekly hard sets", midText:"[weekly hard sets]", bottomText: "\"5 MORE REPS - Tom Platz\"")) %>
+  <p class="text-4xl mt-3 font-extrabold text-slate-100">Overall Statistics</p> 
+  <div class="grid grid-cols-3 grid-flow-col gap-1 my-5 mx-auto px-2">
+    <%= render(StatisticsViewComponent.new(topText: "So far, you've got", bg: "bg-white", fg: "text-gray-700", midText:"#{current_user.workouts.count} workouts", bottomText: "Keep up the good work.")) %>
+    <%= render(StatisticsViewComponent.new(bg:"bg-red-300", fg:"text-slate-100", topText: "Weekly volume", midText:"0", bottomText: "Some day you'll be able to lift a black hole!")) %>
+    <%= render(StatisticsViewComponent.new(topText: "Weekly hard sets", bg: "bg-white", fg:"text-gray-700", midText: "0", bottomText: "\"5 MORE REPS - Tom Platz\"")) %>
   </div>
 
+  <p class="text-4xl mt-3 font-extrabold text-slate-100">Logbook</p>
+  <div class="mx-2 h-40 mt-5 text-gray-700 bg-white p-5 rounded-xl relative">
+    <% @workouts[0..3].each do |workout| %>
+      <%= link_to workout.title, workout_path(workout.id), class: "text-xl" %>
+      <p class="inline-flex">[EXERCISES]</p>
+      <br>
+    <% end %>
+    <button class="bg-red-300 text-slate-100 text-center absolute p-1 rounded-xl bottom-1">See more</button>
+  </div>
+</div>
