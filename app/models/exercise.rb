@@ -1,4 +1,4 @@
 class Exercise < ApplicationRecord
-  has_many :muscle_group
+  enum :muscleGroup, [:triceps, :delts, :biceps, :lats, :upperBack, :chest, :quadriceps, :forearms, :hamstrings, :calves, :core]
 end
 

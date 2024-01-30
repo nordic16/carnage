@@ -22,7 +22,6 @@ class WorkoutsController < ApplicationController
   end
 
   def edit
-    print(@workout.user)
     if current_user != @workout.user then not_found!("Not found") end
   end
 
@@ -33,7 +32,7 @@ class WorkoutsController < ApplicationController
   end
 
   def workouts_params
-    params.require(:workout).permit(:title)
+    params.require(:workout).permit(:title, :duration)
   end
 
   def find

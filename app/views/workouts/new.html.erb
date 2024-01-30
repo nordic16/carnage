@@ -1,6 +1,12 @@
-<div class="md:container p-4 text-center">
-  <%= form_with model: @workout do |form|  %>
-    <%= form.text_field :title, class: "text-3xl text-center font-bold text-slate-100 bg-slate-900 rounded-full"%><br><br><br>
-    <%= form.submit class: "text-slate-100 text-4xl font-bold px-4 py-2 bg-red-500 rounded-full" %>
-  <% end %>
+<div class="md:container p-4 mx-auto relative">
+  <div class="grid grid-cols-1 grid-flow-col">
+    <%= form_with model: @workout do |form|  %>
+      <p class="text-slate-100 text-xl font-bold">Title</p>
+      <%= form.text_field :title, class: "text-3xl text-center font-bold text-slate-100 bg-zinc-900 rounded-2xl"%><br>
+      <%= form.submit class: "text-slate-100 text-xl font-bold px-4 mt-3 py-1 bg-red-500 rounded-lg" %>
+    <% end %>
+    <%= form_with model: @exercises do |exercise| %>
+        <p class="text-3xl font-extrabold text-slate-100">Exercises</p>
+    <% end %>
+  </div>
 </div>
