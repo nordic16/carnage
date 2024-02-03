@@ -1,7 +1,7 @@
 <div class="md:container px-4 mx-auto">
   <h1 class="text-6xl font-bold text-slate-100 text-center">Workouts</h1>
   
-  <div class="grid grid-flow-col gap-4 mx-auto">
+  <div class="gap-4 mx-auto flex justify-center">
     <% @workouts.each do |workout| %>
       <div class="max-w-md my-4 bg-slate-900 rounded-b-lg text-center">
         <p class="bg-red-500 rounded-t-lg font-bold text-slate-100"><%= workout.title %></p>

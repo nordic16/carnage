@@ -1,7 +1,8 @@
-<div class="bg-zinc-950 outline outline-1 outline-slate-500 mb-2">
-  <div class="inline-flex">
+<div class="bg-zinc-950 mb-2 hover:bg-zinc-800">
+  <div class="flex justify-between">
     <!--Image in the future-->
     <p class="font-bold text-slate-100 text-md"><%= @title %></p>
+    <button class="text-red-500 justify-end">x</button>
   </div>
   <% @muscleGroup.each do |mg| %>
     <p class="ml-2 font-bold text-sm text-slate-500"><%= mg.name %></p>
