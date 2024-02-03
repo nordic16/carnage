@@ -2,10 +2,6 @@
 
 one:
   name: MyString
-  description: MyString
-  emphasis: MyString
 
 two:
   name: MyString
-  description: MyString
-  emphasis: MyString
