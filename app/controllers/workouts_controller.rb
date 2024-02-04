@@ -33,7 +33,7 @@ class WorkoutsController < ApplicationController
   end
 
   def workouts_params
-    params.require(:workout).permit(:title, :duration)
+    params.require(:workout).permit(:title, :duration, :description, exercise_ids: [])
   end
 
   def find

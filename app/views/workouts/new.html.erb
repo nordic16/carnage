@@ -1,6 +1,6 @@
 <script>
   function displayModal() {
-      let dialog = document.getElementById('dialog');
+      const dialog = document.getElementById('dialog');
       dialog.showModal();
   }
 
@@ -8,35 +8,56 @@
       const dialog = document.getElementById('dialog');
       dialog.close();
   }
+
+  function addExercises() {
+    closeModal();
+    
+    let list = document.getElementById('ex_list');
+    let select = document.getElementById('workout_exercise_ids');
+    let index = select.options.selectedIndex;
+
+    let li = document.createElement("li");
+    li.setAttribute("class", "ml-4 ")
+    let textNode = document.createTextNode(select[index].text);
+
+    li.appendChild(textNode);
+    ex_list.appendChild(li);
+  }
 </script>
 
 <div class="md:container p-4 mx-auto">
   <p class="text-4xl font-extrabold text-slate-100 mb-3">New workout</p>
   
-  <dialog id="dialog" class="bg-zinc-950 p-5 rounded-2xl w-1/3">
-    <div class="flex justify-between">
-      <p class="text-slate-100 text-3xl font-extrabold">Add Exercise</p>
-      <button type="button" onclick="closeModal();" class="font-bold text-red-500">x</button>
-    </div>
-    <br>
-    <%= fields_for :exercises, @workout.exercises do |f| %>
-      <ul class="list max-h-sm">
-        <% @exercises.each do |exercise| %>
-          <%= render ExerciseViewComponent.new(title: exercise.name, muscleGroup: exercise.muscle_groups, emphasis: exercise.emphasis) %>
-        <% end %>
-      </ul>
-    <% end %>
-  </dialog>
-
-  <div class="grid grid-cols-1 grid-flow-col">
     <%= form_with model: @workout do |form|  %>
-      <p class="text-slate-100 text-xl font-bold">Title</p>
-      <%= form.text_field :title, class: "text-3xl font-bold text-slate-100 bg-zinc-900 rounded-2xl"%><br>
-      <div class="flex flex-row gap-3 justify-center">
+      <div class="grid grid-cols-2 grid-flow-col relative">
+        <dialog id="dialog" class="bg-zinc-950 p-5 rounded-2xl w-1/3">
+          <div class="flex justify-between">
+            <p class="text-slate-100 text-3xl font-extrabold">Add Exercise</p>
+            <button type="button" onclick="closeModal();" class="font-bold text-red-500">x</button>
+          </div>
+          <p class="text-slate-100 font-bold">You may only select one.</p>
+          <br>
+          <%= form.collection_select :exercise_ids, Exercise.order(:name), :id, :name, {multiple: true}, { class: "w-full bg-zinc-950 text-slate-100" } %>
+          <button type="button" onclick="addExercises();" class="text-slate-100 bg-blue-400 w-full rounded-lg">Add exercises</button>
+        </dialog>
+        <div>
+          <p class="text-slate-100 text-xl font-bold">Title</p>
+          <%= form.text_field :title, class: "text-3xl font-bold text-slate-100 bg-zinc-900 rounded-2xl"%><br>
+
+          <p class="text-slate-100 text-xl font-bold">Description</p>
+          <%= form.text_field :description, class: "text-3xl font-bold text-slate-100 bg-zinc-900 rounded-2xl"%><br> 
+        </div>
+
+        <div class="bg-slate-100 p-4 rounded-lg">
+          <p class="text-2xl text-gray-700 font-bold">Exercises</p>
+          <ul id="ex_list" class="list-disc text-gray-700">
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex flex-row gap-5 justify-center mt-6">
         <%= form.submit class: "text-slate-100 text-xl font-bold px-4 mt-3 py-1 bg-red-500 rounded-lg" %>
         <button type="button" onclick="displayModal();" class="bg-blue-400 text-slate-100 text-xl font-bold px-4 mt-3 py-1 rounded-lg">Add Exercise</button>
       </div>
     <% end %>
-      <p class="text-2xl text-slate-100 font-bold">Exercises</p>
-   </div>
 </div>
