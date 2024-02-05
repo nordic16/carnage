@@ -11,17 +11,25 @@
 
   function addExercises() {
     closeModal();
+    var dialog = document.getElementById('dialog');
     
-    let list = document.getElementById('ex_list');
-    let select = document.getElementById('workout_exercise_ids');
-    let index = select.options.selectedIndex;
+    var list = document.getElementById('ex_list');
+    var choices = document.getElementsByName('ex_choice');
 
-    let li = document.createElement("li");
-    li.setAttribute("class", "ml-4 ")
-    let textNode = document.createTextNode(select[index].text);
+    var i, checkbox, node, li;
+    for(i = 0; i < choices.length; i++) {
+      var elem = choices[i];
+       // this is some of the worst code i've ever written.... but hey, it works!
+      if(elem.firstChild.nextSibling.nextSibling.nextSibling.checked) {
+        li = document.createElement('li');
+        li.setAttribute("class", "ml-4 ")
+        
+        node = document.createTextNode(choices[i].firstChild.nextSibling.textContent);
 
-    li.appendChild(textNode);
-    ex_list.appendChild(li);
+        li.appendChild(node);
+        ex_list.appendChild(li);
+      }
+    }
   }
 </script>
 
@@ -37,8 +45,13 @@
           </div>
           <p class="text-slate-100 font-bold">You may only select one.</p>
           <br>
-          <%= form.collection_select :exercise_ids, Exercise.order(:name), :id, :name, {multiple: true}, { class: "w-full bg-zinc-950 text-slate-100" } %>
-          <button type="button" onclick="addExercises();" class="text-slate-100 bg-blue-400 w-full rounded-lg">Add exercises</button>
+          <%= form.collection_check_boxes :exercise_ids, Exercise.all, :id, :name, {multiple: true}, { class: " text-blue-400 w-full bg-zinc-950" } do |f| %>
+            <div name="ex_choice" class="text-slate-100">
+              <p id="ex_name"><%= f.text %></p>
+              <%= f.check_box %>
+            </div>
+          <% end %>
+          <button type="button" onclick="addExercises();" class="text-slate-100 mt-3 bg-blue-400 w-full rounded-lg">Add exercises</button>
         </dialog>
         <div>
           <p class="text-slate-100 text-xl font-bold">Title</p>
