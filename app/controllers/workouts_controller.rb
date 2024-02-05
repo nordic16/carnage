@@ -20,6 +20,8 @@ class WorkoutsController < ApplicationController
   end
 
   def show
+
+    @exercises = Exercise.where(id: @workout.exercise_ids)
   end
 
   def edit
