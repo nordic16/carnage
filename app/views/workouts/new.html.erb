@@ -43,7 +43,6 @@
             <p class="text-slate-100 text-3xl font-extrabold">Add Exercise</p>
             <button type="button" onclick="closeModal();" class="font-bold text-red-500">x</button>
           </div>
-          <p class="text-slate-100 font-bold">You may only select one.</p>
           <br>
           <%= form.collection_check_boxes :exercise_ids, Exercise.all, :id, :name, {multiple: true}, { class: " text-blue-400 w-full bg-zinc-950" } do |f| %>
             <div name="ex_choice" class="text-slate-100">
