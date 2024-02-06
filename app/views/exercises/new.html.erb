@@ -1,0 +1,22 @@
+<div class="md:container mx-auto">
+  <p class="text-center text-4xl text-slate-100 font-extrabold mb-9">New Exercise</p>
+  <div class="flex justify-center">
+    <%= form_with(model: @exercise) do |form| %>
+      <%= form.label :name, class: "font-bold text-slate-100 mr-2" %>
+      <%= form.text_field :name, class: "bg-zinc-900 rounded-2xl text-slate-100 mb-3" %><br>
+      
+      <%= form.label :description, class: "font-bold text-slate-100 mr-2" %>
+      <%= form.text_field :description, class: "bg-zinc-900 rounded-2xl text-slate-100 mb-3" %><br>
+
+      <%= form.label :muscle_group, class: "font-bold text-slate-100 mr-2" %>
+      
+
+      <%= form.label :exercise_type, class: "font-bold text-slate-100 mr-2" %>
+      <%= form.collection_select :exerciseType, Exercise::TYPES, :to_s, :to_s, {}, {class: "text-slate-100 bg-zinc-900 rounded-xl"} %><br>
+      
+      <button type="button"></button>
+      <%= form.submit class: "bg-red-500 text-slate-100 text-xl font-bold rounded-lg p-2 mt-9 w-full" %>
+    
+    <% end %>
+  </div>
+</div>

@@ -16,11 +16,10 @@ class WorkoutsController < ApplicationController
 
   def create
     @workout = current_user.workouts.new(workouts_params)
-    if @workout.save then redirect_to workout_path(@workout) end
+    if @workout.save then redirect_to edit_workout_path(@workout) end
   end
 
   def show
-
     @exercises = Exercise.where(id: @workout.exercise_ids)
   end
 

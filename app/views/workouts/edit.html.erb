@@ -1,9 +1,21 @@
 <div class="md:container px-4">
-  <%= form_with model: @workout do |form| %>
-    <p class="text-slate-100 font-bold text-xl">Title</p>
-    <%= form.text_field :title, class: "text-xl font-bold text-slate-100 bg-zinc-900 rounded-l mb-3"%>
-    <p class="text-xl font-bold text-slate-100">Duration (minutes)</p>
-    <%= form.number_field :duration, in:5.0..1440, step: 5, class: "text-slate-100 text-xl bg-zinc-900 mb-3" %><br>
-    <%= form.submit class: "text-slate-100 text-3xl font-bold px-4 py-2 bg-red-500 rounded-xl" %>
-  <% end %>
+  <div class="grid grid-cols-2 grid-flow-col">
+    <%= form_with model: @workout do |form| %>
+      <p class="text-slate-100 font-bold text-xl">Title</p>
+      <%= form.text_field :title, class: "text-xl font-bold text-slate-100 bg-zinc-900 rounded-l mb-3"%>
+      <p class="text-xl font-bold text-slate-100">Duration (minutes)</p>
+      <%= form.number_field :duration, in:5.0..1440, step: 5, class: "text-slate-100 text-xl bg-zinc-900 mb-3" %><br>
+      <%= form.submit class: "text-slate-100 text-2xl font-bold px-4 py-2 bg-red-500 rounded-xl" %>
+    <% end %>
+  
+    <div class="bg-slate-100 rounded-lg p-4 text-gray-700">
+      <p class="text-2xl font-bold">Exercises</p>
+
+      <% @workout.exercises.each do |exercise| %>
+        <div class="ml-2">
+           
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
