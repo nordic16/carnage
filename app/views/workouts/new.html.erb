@@ -4,8 +4,8 @@
     <%= form_with model: @workout do |form|  %>
       <div class="grid grid-cols-2 grid-flow-col relative">
         <%= render DialogComponent.new(title: "Add Exercise", close_button_text: "Add Exercises") do |b| %>
-          <%= form.collection_check_boxes :exercise_ids, Exercise.all, :id, :name, {multiple: true}, { class: " text-blue-400 w-full bg-zinc-950" } do |f| %>
-              <div name="ex_choice" class="text-slate-100">
+          <%= form.collection_check_boxes :exercise_ids, Exercise.all, :id, :name, {multiple: true}, { class: " text-blue-400 bg-zinc-950" } do |f| %>
+            <div name="ex_choice" class="text-slate-100 flex justify-between">
                 <p id="ex_name"><%= f.text %></p>
                 <%= f.check_box %>
               </div>

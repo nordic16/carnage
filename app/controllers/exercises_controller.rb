@@ -6,12 +6,13 @@ class ExercisesController < ApplicationController
   end
 
   def create() 
-    if @exercise.save(exercise_params)
+    @exercise = Exercise.new(exercise_params)
+    if @exercise.save
       redirect_to '/' 
     end
   end
 
   def exercise_params() 
-    params.require(:exercise).permit(:name, :emphasis, :description, :exerciseType)
+    params.require(:exercise).permit(:name, :emphasis, :description, :exerciseType, muscle_group_ids: [])
   end
 end
