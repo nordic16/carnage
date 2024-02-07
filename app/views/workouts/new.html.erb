@@ -26,9 +26,9 @@
         </div>
       </div>
 
-      <div class="flex flex-row gap-5 justify-center mt-6">
-        <%= form.submit class: "text-slate-100 text-xl font-bold px-4 mt-3 py-1 bg-red-500 rounded-lg" %>
-        <button type="button" onclick="displayModal();" class="bg-blue-400 text-slate-100 text-xl font-bold px-4 mt-3 py-1 rounded-lg">Add Exercise</button>
+      <div class="flex gap-5 justify-center mt-6">     
+        <button type="button" onclick="document.getElementById('dialog').showModal();" class="bg-blue-500 text-xl font-bold text-slate-100 mt-9 p-2 rounded-lg">Add exercises</button>
+          <%= form.submit class: "bg-red-500 text-xl font-bold text-slate-100 mt-9 p-2 rounded-lg" %>
       </div>
     <% end %>
 </div>

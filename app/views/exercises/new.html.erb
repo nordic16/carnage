@@ -26,7 +26,7 @@ function displayModal() {
       <%= form.label :exercise_type, class: "font-bold text-slate-100 mr-2" %>
       <%= form.collection_select :exerciseType, Exercise::TYPES, :to_s, :to_s, {}, {class: "text-slate-100 bg-zinc-900 rounded-xl"} %><br>
       
-      <button type="button" onclick="displayModal();" class="bg-blue-500 text-xl font-bold text-slate-100 w-full mt-9 p-2 rounded-lg">Add exercises</button>
+      <button type="button" onclick="document.getElementById('dialog').showModal();" class="bg-blue-500 text-xl font-bold text-slate-100 w-full mt-9 p-2 rounded-lg">Add exercises</button>
       <%= form.submit class: "bg-red-500 text-slate-100 text-xl font-bold rounded-lg p-2 mt-2 w-full" %>
     
     <% end %>
