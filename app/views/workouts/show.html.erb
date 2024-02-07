@@ -16,6 +16,7 @@
         <p>Total intensity: <b>[]</b></p> <!--Total intensity. Asked after the user finishes the workout-->
         <p>Session duration: <b><%= @workout.duration %> min</b></p>
       </div>
+      <%= button_to "Delete workout", workout_path(@workout), method: :delete, class: "w-full rounded-lg text-center text-slate-100 font-bold bg-red-500 mt-6" %>
     </div>
   </div>
 </div>

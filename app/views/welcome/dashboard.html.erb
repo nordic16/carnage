@@ -14,13 +14,23 @@
     </div>
 
     <p class="text-4xl font-extrabold text-slate-100">Logbook</p>
-    <div class="mx-2 h-40 text-gray-700 bg-white p-3 rounded-xl relative">
-      <% @workouts[0..2].each do |workout| %>
-        <%= link_to workout.title, workout_path(workout.id), class: "text-2xl" %>
-        <p class="inline-flex"> (<%= workout.created_at.strftime("%d/%m/%Y") %>)</p>
-        <br>
-      <% end %>
-      <button class="bg-red-300 text-slate-100 text-center absolute p-1 rounded-xl bottom-1">See more</button>
+    <div class="mx-2 text-gray-700 bg-white p-3 rounded-xl">
+      <div class="bg-gray-100 overflow-auto max-h-44">
+        <% if @workouts.count > 0 %>
+          <% @workouts.each do |workout| %>
+            <%= link_to workout.title, workout_path(workout.id), class: "text-2xl" %>
+            <p class="inline-flex"> (<%= workout.created_at.strftime("%d/%m/%Y") %>)</p>
+            <br>
+          <% end %>
+        <% else %>
+          <p class="font-bold text-2xl">No workouts here!</p>
+          <p class="ml-2">Added workouts will appear here.</p>
+        <% end %>
+      </div>
+      <div class="inline-flex align-bottom gap-3 mt-3">
+      <!--<button class="bg-red-300 text-slate-100 text-center p-1 rounded-xl">See more</button> -->
+        <%= link_to "New workout", new_workout_path, class: "bg-red-300 text-slate-100 text-center p-1 rounded-xl" %>
+      </div>
     </div>
   </div>
 </div>
