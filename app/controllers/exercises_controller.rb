@@ -1,5 +1,10 @@
 class ExercisesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :find, only: [:edit, :update]
+
+
+  def find
+    @exercise = Exercise.find(params[:id])
+  end
 
   def new
     @exercise = Exercise.new
@@ -19,4 +24,14 @@ class ExercisesController < ApplicationController
   def index
     @exercises = Exercise.all
   end
+
+  def edit
+  end
+
+  def update 
+    if @exercise.update(exercise_params)
+      redirect_to exercises_path
+    end
+  end
+
 end
