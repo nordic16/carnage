@@ -4,7 +4,7 @@
     
     <div class="ml-2">
       <% @exercises.each do |ex| %>
-        <%= render ExerciseViewComponent.new(title: ex.name, muscleGroup: ex.muscle_groups, emphasis: ex.emphasis) %>
+        <%= render ExerciseViewComponent.new(exercise: ex) %>
       <% end %>
     </div>
   </div>
