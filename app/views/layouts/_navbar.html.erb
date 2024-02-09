@@ -15,7 +15,7 @@
               <%= render(NavbarFieldComponent.new(icon: "fa fa-home", title: "Home", href: "/"))%></li>
           <% if user_signed_in? %>
             <li class="mr-3 text-red-300 hover:text-red-400 transition-colors duration-300 ease-in-out">
-              <%= render(NavbarFieldComponent.new(icon: "fa fa-book-skull", title: "Logbook", href: "/dashboard/"))%></li>
+              <%= render(NavbarFieldComponent.new(icon: "fa fa-book-skull", title: "Logbook", href: "/logbook/#{current_user.id}"))%></li>
           <% end %>
         </div>
 

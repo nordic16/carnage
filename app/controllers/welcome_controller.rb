@@ -5,7 +5,9 @@ class WelcomeController < ApplicationController
   def about
   end
 
-  def dashboard
-    @workouts = current_user.workouts
+  def logbook
+    @user = User.find(params[:id]).first
+    @workouts = @user.workouts
+
   end
 end

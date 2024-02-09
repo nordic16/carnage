@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
   get '/about', to: "welcome#about"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  get '/dashboard', to: "welcome#dashboard"
+  get '/logbook(/:id)', to: "welcome#logbook"
 
   resources :workouts
   resources :exercises
