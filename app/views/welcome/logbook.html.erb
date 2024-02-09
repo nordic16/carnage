@@ -27,10 +27,13 @@
           <p class="ml-2">Added workouts will appear here.</p>
         <% end %>
       </div>
-      <div class="inline-flex align-bottom gap-3 mt-3">
-      <!--<button class="bg-red-300 text-slate-100 text-center p-1 rounded-xl">See more</button> -->
-        <%= link_to "New workout", new_workout_path, class: "bg-red-300 text-slate-100 text-center p-1 rounded-xl" %>
-      </div>
+
+      <% if @user == current_user %>
+        <div class="inline-flex align-bottom gap-3 mt-3">
+        <!--<button class="bg-red-300 text-slate-100 text-center p-1 rounded-xl">See more</button> -->
+          <%= link_to "New workout", new_workout_path, class: "bg-red-300 text-slate-100 text-center p-1 rounded-xl" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

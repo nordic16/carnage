@@ -1,0 +1,13 @@
+<div class="md:container">
+  <div class="mx-auto bg-white rounded-lg p-3">
+    <p class="text-4xl mb-2 text-gray-700 font-extrabold">Exercises
+    
+    <div class="ml-2">
+      <% @exercises.each do |ex| %>
+        <%= render ExerciseViewComponent.new(title: ex.name, muscleGroup: ex.muscle_groups, emphasis: ex.emphasis, bg_color: "bg-slate-200", 
+            fg_color: "text-gray-700", bg_color_hover: "bg-red-400") %>
+      <% end %>
+    </div>
+  </div>
+  </div>
+</div>

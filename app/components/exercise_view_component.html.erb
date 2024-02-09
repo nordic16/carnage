@@ -1,12 +1,10 @@
-<div id="exercise" class="bg-zinc-950 mb-2 hover:bg-zinc-800">
-  <div class="flex justify-between">
-    <!--Image in the future-->
-    <p class="font-bold text-slate-100 text-md"><%= @title %></p>
-      <input type="checkbox" class="text-red-500 justify-end"></input>
+<div id="exercise" class="<%= @bg_color %> mb-2 hover:<%= @bg_color_hover %> p-1 rounded-lg"> 
+  <div class="flex justify-between">    <!--Image in the future-->
+    <p class="font-bold <%= @fg_color %> text-md"><%= @title %></p>
   </div>
   <% @muscleGroup.each do |mg| %>
-    <p class="ml-2 font-bold text-sm text-slate-500"><%= mg.name %></p>
+    <p class="ml-2 text-sm inline <%= @fg_color %>"><%= mg.name %></p>
   <% end %>
 
-  <p class="font-bold ml-2 text-sm text-slate-500"> (<%= @emphasis %>)</p>
+  <p class="ml-2 text-sm <%= @fg_color %>"> (<%= @emphasis %>)</p>
 </div>
