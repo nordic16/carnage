@@ -23,6 +23,9 @@ function displayModal() {
       <%= form.label :description, class: "font-bold text-slate-100 mr-2" %>
       <%= form.text_field :description, class: "bg-zinc-900 rounded-2xl text-slate-100 mb-3" %><br> 
 
+      <%= form.label :emphasis, class: "font-bold text-slate-100 mr-2" %>
+      <%= form.text_field :emphasis, class: "bg-zinc-900 rounded-2xl text-slate-100 mb-3" %><br>
+
       <%= form.label :exercise_type, class: "font-bold text-slate-100 mr-2" %>
       <%= form.collection_select :exerciseType, Exercise::TYPES, :to_s, :to_s, {}, {class: "text-slate-100 bg-zinc-900 rounded-xl"} %><br>
       

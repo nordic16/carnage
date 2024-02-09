@@ -12,5 +12,5 @@ class Exercise < ApplicationRecord
   has_and_belongs_to_many :workouts
   has_many :exercise_sets
 
-  validates :muscle_groups, presence: true
+  validates :muscle_groups, :name, presence: true
 end
