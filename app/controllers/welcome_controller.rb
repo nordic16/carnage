@@ -6,7 +6,7 @@ class WelcomeController < ApplicationController
   end
 
   def logbook
-    @user = User.find(params[:id]).first
+    @user = User.find(params[:id])
     @workouts = @user.workouts
 
   end

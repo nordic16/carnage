@@ -1,14 +1,14 @@
 <div class="md:container">
   <div class="text-slate-100 inline-flex items-center">
     <img class="object-scale-down h-20 w-20 rounded-full mr-3" src="https://i.pinimg.com/564x/b1/be/8f/b1be8fe6cd9e67ae26a480a1040c3733.jpg"></img>
-    <p class="text-4xl text-slate-100 font-extrabold text-center"><%= current_user.username %></p>
+    <p class="text-4xl text-slate-100 font-extrabold text-center"><%= @user.username %></p>
   </div>
   <br>
 
   <div class="grid gap-3 mt-3 grid-flow-row">
     <p class="text-4xl font-extrabold text-slate-100">Overall Statistics</p> 
     <div class="grid grid-cols-3 grid-flow-col gap-2 my-5 mx-auto px-2">
-      <%= render(StatisticsViewComponent.new(topText: "So far, you've got", bg: "bg-white", fg: "text-gray-700", midText:"#{current_user.workouts.count} workouts", bottomText: "Keep up the good work.")) %>
+      <%= render(StatisticsViewComponent.new(topText: "So far, you've got", bg: "bg-white", fg: "text-gray-700", midText:"#{@user.workouts.count} workouts", bottomText: "Keep up the good work.")) %>
       <%= render(StatisticsViewComponent.new(bg:"bg-red-300", fg:"text-slate-100", topText: "Weekly volume", midText:"0", bottomText: "Some day you'll be able to lift a black hole!")) %>
       <%= render(StatisticsViewComponent.new(topText: "Weekly hard sets", bg: "bg-white", fg:"text-gray-700", midText: "0", bottomText: "\"5 MORE REPS - Tom Platz\"")) %>
     </div>
