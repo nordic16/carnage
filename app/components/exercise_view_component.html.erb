@@ -7,7 +7,7 @@
   <% end %>
 
   <% if @exercise.emphasis.presence %>
-    <p class="ml-2 text-sm"> (<%= @emphasis %>)</p>
+    <p class="ml-2 text-sm"> (<%= @exercise.emphasis %>)</p>
   <% end %>
 
   <% if @exercise.user_id == helpers.current_user.id %>

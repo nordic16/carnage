@@ -13,7 +13,7 @@ Exercise.destroy_all
 upper_back = MuscleGroup.where(name: "Upper Back").first
 lats = MuscleGroup.where(name: "Lats").first
 delts = MuscleGroup.where(name: "Delts").first
-
+chest = MuscleGroup.where(name: "Chest").first
 
 # Exercises from my pull day lmfao
 Exercise.create!([{
@@ -49,6 +49,27 @@ Exercise.create!([{
     description: "",
     emphasis: "Rear delts",
     muscle_groups: [delts],
+    user_id: 1
+  },
+  {
+    name: "Machine Bench Press",
+    description: "",
+    emphasis: "Costal Pec, Sternal Pec",
+    muscle_groups: [chest],
+    user_id: 1
+  },
+  {
+    name: "Smith Machine Incline Press",
+    description: "Incline bench on a smith machine",
+    emphasis: "Clavicular Pec",
+    muscle_groups: [chest],
+    user_id: 1
+  },
+  {
+    name: "Pec Deck",
+    description: "",
+    emphasis: "Costal Pec, Sternal Pec",
+    muscle_groups: [chest],
     user_id: 1
   }
 ])
