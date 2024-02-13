@@ -43,6 +43,23 @@ class WorkoutsController < ApplicationController
     end
   end
 
+  def addSet
+    u = ExerciseSet.new(exercise_id: params[:exercise_id], intensity: 1)
+
+
+    if u.save
+
+      @workout.exercises.find(params[:exercise_id]).exercise_sets.add(u)
+      @workout.exercises.exercise_sets.save
+
+    else 
+      puts 'Something went wrong...'
+
+    end
+
+    redirect_to edit_workout_path(params[:workout_id])
+  end
+
   def not_found!(msg)
     raise ActionController::RoutingError.new(msg)
   end
