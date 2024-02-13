@@ -70,3 +70,5 @@ gem "tailwindcss-rails", "~> 2.3"
 
 gem "devise"
 gem "view_component"
+
+gem "faker", "~> 3.2"

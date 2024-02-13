@@ -47,4 +47,7 @@ class WorkoutsController < ApplicationController
     raise ActionController::RoutingError.new(msg)
   end
 
+  def remove_exercise(id) 
+    @workout.exercises.remove(Exercise.find(id))
+  end
 end

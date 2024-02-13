@@ -33,5 +33,4 @@ class ExercisesController < ApplicationController
       redirect_to exercises_path
     end
   end
-
 end

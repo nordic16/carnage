@@ -1,21 +1,31 @@
-<div class="md:container px-4">
-  <div class="grid grid-cols-2 grid-flow-col">
+<div class="md:container px-4 text-slate-100">
     <%= form_with model: @workout do |form| %>
-      <p class="text-slate-100 font-bold text-xl">Title</p>
-      <%= form.text_field :title, class: "text-xl font-bold text-slate-100 bg-zinc-900 rounded-l mb-3"%>
-      <p class="text-xl font-bold text-slate-100">Duration (minutes)</p>
-      <%= form.number_field :duration, in:5.0..1440, step: 5, class: "text-slate-100 text-xl bg-zinc-900 mb-3" %><br>
-      <%= form.submit class: "text-slate-100 text-2xl font-bold px-4 py-2 bg-red-500 rounded-xl" %>
-    <% end %>
-  
-    <div class="bg-slate-100 rounded-lg p-4 text-gray-700">
-      <p class="text-2xl font-bold">Exercises</p>
+      <div class="text-slate-100 flex justify-evenly">
+        <div>
+          <%= form.label :title, class: "font-bold" %>
+          <%= form.text_field :title, class: "bg-zinc-900 rounded-2xl mb-2" %><br>
 
-      <% @workout.exercises.each do |exercise| %>
-        <div class="ml-2">
-           
+          <%= form.label :description, class: "font-bold" %>
+          <%= form.text_field :description, class: "bg-zinc-900 rounded-2xl mb-2" %>
         </div>
-      <% end %>
-    </div>
-  </div>
+
+        <div class="w-2/3 bg-white rounded-lg text-gray-700 p-3 relative">
+          <p class="text-4xl font-extrabold">Exercises</p>
+          <% @workout.exercises.each do |ex| %>
+            <%= render ExerciseViewComponent.new(exercise: ex) do |b| %>
+              <div class="flex justify-evenly"> 
+                <%= ex.exercise_sets.each do |set| %>
+                  <p><%= set.intensity %></p>
+                  <p>a</p>
+                <% end %>
+              </div>
+              <div class="justify-end">
+                <button type="button" class="text-slate-100 p-1 bg-blue-400 text-sm font-bold" data-action="click->workout#addSet">Add Set</button>
+              </div>
+            <% end %>
+          <% end %>
+        
+        </div>
+      </div>
+    <% end %>
 </div>
