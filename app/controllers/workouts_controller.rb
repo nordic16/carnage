@@ -55,9 +55,13 @@ class WorkoutsController < ApplicationController
       puts "success!"
 
     else
-      puts "something went wrong."
-    
+      puts "something went wrong."  
     end
-    
+  end
+
+  def removeSet()
+    set = ExerciseSet.find(params[:set_id])
+    set.destroy
+    puts "yo"
   end
 end

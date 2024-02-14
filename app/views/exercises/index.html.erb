@@ -4,7 +4,7 @@
     
     <div class="ml-2">
       <% @exercises.each do |ex| %>
-        <%= render ExerciseViewComponent.new(exercise: ex) do |b| %>
+        <%= render ExerciseViewComponent.new(exercise: ex, is_workout: false) do |b| %>
           <%= link_to "Edit Exercise", edit_exercise_path(ex.id), class: "bg-red-400 hover:bg-red-500 text-slate-100 text-sm p-1 rounded-lg" %>
         <% end %>
       <% end %>

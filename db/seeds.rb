@@ -21,56 +21,64 @@ Exercise.create!([{
   description: "Wide grip t-bar row",
   emphasis: "Traps, Rhomboids, Rear delts",
   muscle_groups: [upper_back],
-  user_id: 1
+  user_id: 1,
+  exerciseType: Exercise::WEIGHT_REPS
   },
   {
     name: "Kelso Shrug",
     description: "Shrug",
     emphasis: "Mid-Upper traps",
     muscle_groups: [upper_back],
-    user_id: 1
+    user_id: 1,
+    exerciseType: Exercise::WEIGHT_REPS
   },
   {
     name: "Wide Grip Pulldown",
     description: "Lat pulldown with a wide grip",
     emphasis: "Iliac Lat",
     muscle_groups: [lats],
-    user_id: 1
+    user_id: 1,
+    exerciseType: Exercise::WEIGHT_REPS
   },
   {
     name: "Unilateral Lat Pulldown",
     description: "Pulldown from the sagital plane",
     emphasis: "Thoracic-lumbar lat",
     muscle_groups: [lats],
-    user_id: 1
+    user_id: 1,
+    exerciseType: Exercise::WEIGHT_REPS
   },
   {
     name: "Cable Rear Delt Flys",
     description: "",
     emphasis: "Rear delts",
     muscle_groups: [delts],
-    user_id: 1
+    user_id: 1,
+    exerciseType: Exercise::WEIGHT_REPS
   },
   {
     name: "Machine Bench Press",
     description: "",
     emphasis: "Costal Pec, Sternal Pec",
     muscle_groups: [chest],
-    user_id: 1
+    user_id: 1,
+    exerciseType: Exercise::WEIGHT_REPS
   },
   {
     name: "Smith Machine Incline Press",
     description: "Incline bench on a smith machine",
     emphasis: "Clavicular Pec",
     muscle_groups: [chest],
-    user_id: 1
+    user_id: 1,
+    exerciseType: Exercise::WEIGHT_REPS
   },
   {
     name: "Pec Deck",
     description: "",
     emphasis: "Costal Pec, Sternal Pec",
     muscle_groups: [chest],
-    user_id: 1
+    user_id: 1,
+    exerciseType: Exercise::WEIGHT_REPS
   }
 ])
 

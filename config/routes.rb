@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :workouts do
     post '/edit/addSet', to: "workouts#addSet"
+    post '/edit/removeSet', to:"workouts#removeSet"
   end
 
   resources :exercises

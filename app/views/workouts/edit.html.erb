@@ -9,21 +9,26 @@
           <%= form.text_field :description, class: "bg-zinc-900 rounded-2xl mb-2" %>
         </div>
 
-        <div class="w-2/3 bg-white rounded-lg text-gray-700 p-3 relative">
+        <div class="w-2/3 bg-white rounded-lg text-gray-700 p-3">
           <p class="text-4xl font-extrabold">Exercises</p>
           <% @workout.exercises.each do |ex| %>
-            <%= render ExerciseViewComponent.new(exercise: ex) do |b| %>
-              <div class="flex justify-evenly">
-                <% ExerciseSet.where(workout_id: @workout.id, exercise_id: ex.id).each do |x| %>
-                  <p><%= x.intensity %></p>
-                <% end %> 
-              </div>
-              <div class="justify-end">
-                <button type="button" class="text-slate-100 p-1 bg-blue-400 text-sm font-bold rounded-lg" data-action="click->workout#addSet">Add Set</button>
-              </div>
+            <%= render ExerciseViewComponent.new(exercise: ex, is_workout: true) do |b| %>
+              <% if ex.exerciseType == Exercise::WEIGHT_REPS %>
+                <div class="grid grid-cols-4 text-center gap-3">
+                  <p>Intensity</p>
+                  <p>Weight (kg)</p>
+                  <p>Reps</p>
+                  <p></p>
+                  <% ExerciseSet.where(workout_id: @workout.id, exercise_id: ex.id).each do |x| %>
+                    <p class=""><%= x.intensity %></p>
+                    <p>a</p>
+                    <p>b</p>
+                    <button data-workout-set-id="<%= x.id %>" type="button" data-action="click->workout#removeSet" class="p-1 text-slate-100 text-sm font-bold rounded-lg bg-red-400">Remove set</button>
+                  <% end %>
+                </div>
+              <% end %>
             <% end %>
           <% end %>
-        
         </div>
       </div>
     <% end %>

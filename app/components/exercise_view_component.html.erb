@@ -1,6 +1,12 @@
 <div id="exercise" class="bg-slate-100 text-gray-700 mb-2 p-1 rounded-lg" data-controller="workout" data-workout-id=<%= @exercise.id %>> 
   <div class="flex justify-between">    <!--Image in the future-->
     <p class="font-bold text-md"><%= @exercise.name %></p>
+    <% if @is_workout %>
+      <div>
+        <button type="button" class="text-slate-100 p-1 bg-blue-400 text-sm font-bold rounded-lg" data-action="click->workout#addSet">Add Set</button>
+        <button type="button" class="text-slate-100 p-1 bg-red-400 text-sm font-bold rounded-lg" data-action="click->workout#removeExercise">Remove Exercise</button>
+      </div>
+    <% end %>
   </div>
   <% @exercise.muscle_groups.each do |mg| %>
     <p class="ml-2 text-sm inline"><%= mg.name %></p>
@@ -15,4 +21,4 @@
       <%= content %>
     </div>
   <% end %>
-</div>
+  </div>

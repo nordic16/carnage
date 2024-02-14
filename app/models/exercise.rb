@@ -14,4 +14,5 @@ class Exercise < ApplicationRecord
   belongs_to :user # Every single exercise was created by a user.
 
   validates :muscle_groups, :name, presence: true
+  validates :exerciseType, inclusion: {in: TYPES}
 end
