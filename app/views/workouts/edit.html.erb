@@ -13,10 +13,10 @@
           <p class="text-4xl font-extrabold">Exercises</p>
           <% @workout.exercises.each do |ex| %>
             <%= render ExerciseViewComponent.new(exercise: ex) do |b| %>
-              <div class="flex justify-evenly"> 
-                <%= ex.exercise_sets.each do |set| %>
-                  <p><%= set.intensity %></p>
-                <% end %>
+              <div class="flex justify-evenly">
+                <% ExerciseSet.where(workout_id: @workout.id, exercise_id: ex.id).each do |x| %>
+                  <p><%= x.intensity %></p>
+                <% end %> 
               </div>
               <div class="justify-end">
                 <button type="button" class="text-slate-100 p-1 bg-blue-400 text-sm font-bold rounded-lg" data-action="click->workout#addSet">Add Set</button>

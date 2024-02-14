@@ -6,10 +6,10 @@ export default class extends Controller {
   connect() {
   }
   
-  addSet() {
+  async addSet() {
     let id = this.data.get("id");
     let url = window.location.href + `/addSet?exercise_id=${id}`
   
-    sendRequest(url, "POST", id)
+    await sendRequest(url, "POST", id)
   }
 }       
