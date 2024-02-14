@@ -58,9 +58,6 @@ class WorkoutsController < ApplicationController
       puts "something went wrong."
     
     end
-
-    redirect_to edit_workout_path(params[:workout_id])
-
     
   end
 end

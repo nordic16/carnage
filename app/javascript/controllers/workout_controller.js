@@ -6,10 +6,13 @@ export default class extends Controller {
   connect() {
   }
   
-  async addSet() {
+  addSet() {
     let id = this.data.get("id");
-    let url = window.location.href + `/addSet?exercise_id=${id}`
+    let prev = window.location.href
+    let url = prev + `/addSet?exercise_id=${id}`
   
-    await sendRequest(url, "POST", id)
+    sendRequest(url, "POST", id).then(() => {
+      window.location.replace(prev)
+    })
   }
 }       
