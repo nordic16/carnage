@@ -3,13 +3,12 @@
     <p class="font-bold text-md"><%= @exercise.name %></p>
     <% if @is_workout %>
       <div>
-        <button type="button" class="text-slate-100 p-1 bg-blue-400 text-sm font-bold rounded-lg" data-action="click->workout#addSet">Add Set</button>
         <button type="button" class="text-slate-100 p-1 bg-red-400 text-sm font-bold rounded-lg" data-action="click->workout#removeExercise">Remove Exercise</button>
       </div>
     <% end %>
   </div>
   <% @exercise.muscle_groups.each do |mg| %>
-    <p class="ml-2 text-sm inline"><%= mg.name %></p>
+    <p class="ml-2 text-sm inline><%= mg.name %></p>
   <% end %>
 
   <% if @exercise.emphasis.presence %>
@@ -21,4 +20,11 @@
       <%= content %>
     </div>
   <% end %>
+  
+  <% if @is_workout %>
+    <div class="flex justify-evenly mt-4 gap-4">
+      <button type="button" class="w-1/2 text-slate-100 p-1 bg-blue-400 text-sm font-bold rounded-lg" data-action="w-1/2 click->workout#addSet">Add Set</button>
+    </div>
+  <% end %>
   </div>
+

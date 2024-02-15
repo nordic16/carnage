@@ -62,6 +62,5 @@ class WorkoutsController < ApplicationController
   def removeSet()
     set = ExerciseSet.find(params[:set_id])
     set.destroy
-    puts "yo"
   end
 end

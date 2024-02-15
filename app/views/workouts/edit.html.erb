@@ -23,11 +23,12 @@
                     <p class=""><%= x.intensity %></p>
                     <p>a</p>
                     <p>b</p>
-                    <button data-workout-set-id="<%= x.id %>" type="button" data-action="click->workout#removeSet" class="p-1 text-slate-100 text-sm font-bold rounded-lg bg-red-400">Remove set</button>
+                    <button type="button" data-set-id-value="<%= x.id %>" data-action="click->workout#removeSet" class="p-1 text-slate-100 text-sm font-bold rounded-lg bg-red-400">Remove set</button>
                   <% end %>
                 </div>
               <% end %>
             <% end %>
+
           <% end %>
         </div>
       </div>
