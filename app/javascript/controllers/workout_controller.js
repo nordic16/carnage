@@ -3,10 +3,6 @@ import { sendRequest } from './helpers'
 
 // Connects to data-controller="workout"
 export default class extends Controller {
-  static values = {
-    setId: String
-  }
-
   connect() {
   }
   

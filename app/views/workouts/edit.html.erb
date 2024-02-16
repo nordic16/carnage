@@ -1,4 +1,5 @@
 <div class="md:container px-4 text-slate-100">
+
     <%= form_with model: @workout do |form| %>
       <div class="text-slate-100 flex justify-evenly">
         <div>
@@ -14,23 +15,28 @@
           <% @workout.exercises.each do |ex| %>
             <%= render ExerciseViewComponent.new(exercise: ex, is_workout: true) do |b| %>
               <% if ex.exerciseType == Exercise::WEIGHT_REPS %>
-                <div class="grid grid-cols-4 text-center gap-3">
-                  <p>Intensity</p>
-                  <p>Weight (kg)</p>
-                  <p>Reps</p>
-                  <p></p>
-                  <% ExerciseSet.where(workout_id: @workout.id, exercise_id: ex.id).each do |x| %>
-                    <p class=""><%= x.intensity %></p>
-                    <p>a</p>
-                    <p>b</p>
-                    <button type="button" data-set-id-value="<%= x.id %>" data-action="click->workout#removeSet" class="p-1 text-slate-100 text-sm font-bold rounded-lg bg-red-400">Remove set</button>
-                  <% end %>
-                </div>
-              <% end %>
+                <%= form.fields_for :exercise_sets do |uform| %>
+                  <div class="grid grid-cols-4 text-center gap-3">
+                    <p>Intensity</p>
+                    <p>Weight (kg)</p>
+                    <p>Reps</p>
+                    <p></p>
+                    <% ExerciseSet.where(workout_id: @workout.id, exercise_id: ex.id).each do |x| %>
+                      <%= form.number_field :intensity, in:1..10 %>
+                      <%= form.number_field :weight %>
+                      <%= form.number_field :reps %>
+                      <button type="button" data-set-id-value="<%= x.id %>" data-action="click->workout#removeSet" class="p-1 text-slate-100 text-sm font-bold rounded-lg bg-red-400">Remove set</button>
+                    <% end %>
+                  </div>
+                  <div class="flex gap-4 mt-3 w-full">
+                    <button type="button" class="w-full text-slate-100 p-1 bg-blue-400 text-sm font-bold rounded-lg" data-action="click->workout#addSet">Add Set</button>
+                  </div>
+                <% end %>
             <% end %>
-
           <% end %>
-        </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
+    <%= form.submit %>
+  <% end %>
 </div>

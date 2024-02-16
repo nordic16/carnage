@@ -28,13 +28,14 @@ class WorkoutsController < ApplicationController
   end
 
   def update
+    puts "A: #{params[:exercise_sets_attributes]}"
     if @workout.update(workouts_params)
       redirect_to workouts_path
     end
   end
 
   def workouts_params
-    params.require(:workout).permit(:title, :duration, :description, exercise_ids: [])
+    params.require(:workout).permit(:title, :duration, :description, exercise_ids: [], exercise_sets_attributes: [:intensity, :weight, :reps])
   end
 
   def find

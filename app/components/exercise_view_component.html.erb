@@ -16,15 +16,9 @@
   <% end %>
 
   <% if @exercise.user_id == helpers.current_user.id %>
-    <div class="flex gap-2 mt-2 ml-2">
+    <div class="gap-2 mt-2 ml-2">
       <%= content %>
     </div>
   <% end %>
-  
-  <% if @is_workout %>
-    <div class="flex justify-evenly mt-4 gap-4">
-      <button type="button" class="w-1/2 text-slate-100 p-1 bg-blue-400 text-sm font-bold rounded-lg" data-action="w-1/2 click->workout#addSet">Add Set</button>
-    </div>
-  <% end %>
-  </div>
+</div>
 

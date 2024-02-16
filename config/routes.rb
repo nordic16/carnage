@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     post '/edit/removeSet', to:"workouts#removeSet"
   end
 
-  resources :exercises
+  resources :exercises do
+    resources :exercise_sets, only: [:destroy]
+  end
 
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
