@@ -67,4 +67,16 @@ class WorkoutsController < ApplicationController
     set = ExerciseSet.find(params[:set_id])
     set.destroy
   end
+
+  def removeExercise()
+    @workout = Workout.find(params[:workout_id])
+    exercise = Exercise.find(params[:exercise_id])
+    
+    exercise.exercise_sets.destroy_all
+    @workout.exercises.delete(exercise)
+
+    if @workout.save
+      puts "success!"
+    end
+  end
 end

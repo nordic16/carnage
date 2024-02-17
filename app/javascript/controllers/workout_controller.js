@@ -25,7 +25,19 @@ export default class extends Controller {
     let prev = window.location.href
     let url = prev + `/removeSet?exercise_id=${id}&set_id=${set_id}`;
 
-    sendRequest(url, "POST", {id, set_id}).then(() => {
+    sendRequest(url, "DELETE", {id, set_id}).then(() => {
+      window.location.replace(prev)
+    })
+  }
+
+  // DEFINITELY MAKE CODE LESS REPETITIVE HOLY SHIT
+  removeExercise(event) {
+    let id = this.data.get("id");
+
+    let prev = window.location.href
+    let url = prev + `/removeExercise?exercise_id=${id}`
+  
+    sendRequest(url, "DELETE", id).then(() => {
       window.location.replace(prev)
     })
   }

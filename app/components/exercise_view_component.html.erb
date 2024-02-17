@@ -3,7 +3,7 @@
     <p class="font-bold text-md"><%= @exercise.name %></p>
     <% if @is_workout %>
       <div>
-        <button type="button" class="text-slate-100 p-1 bg-red-400 text-sm font-bold rounded-lg" data-action="click->workout#removeExercise">Remove Exercise</button>
+        <button type="button" class="text-red-400 p-1 text-sm font-bold" data-action="click->workout#removeExercise">x</button>
       </div>
     <% end %>
   </div>
