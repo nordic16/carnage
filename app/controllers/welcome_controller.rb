@@ -1,4 +1,7 @@
 class WelcomeController < ApplicationController
+
+  before_action :authenticate_user!, only: [:logbook]
+
   def index
   end
 

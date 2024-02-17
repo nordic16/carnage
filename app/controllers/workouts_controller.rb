@@ -15,7 +15,7 @@ class WorkoutsController < ApplicationController
   end
 
   def create
-    @workout = current_user.workouts.new(workouts_params)
+    @workout = current_user.workouts.new(workout_params)
     if @workout.save then redirect_to edit_workout_path(@workout) end
   end
 
@@ -24,18 +24,21 @@ class WorkoutsController < ApplicationController
   end
 
   def edit
+    @workout.exercises.each do |ex| 
+      ex.exercise_sets.build
+    end
     if current_user != @workout.user then not_found!("Not found") end
   end
 
   def update
     puts "A: #{params[:exercise_sets_attributes]}"
-    if @workout.update(workouts_params)
+    if @workout.update(workout_params)
       redirect_to workouts_path
     end
   end
 
-  def workouts_params
-    params.require(:workout).permit(:title, :duration, :description, exercise_ids: [], exercise_sets_attributes: [:intensity, :weight, :reps])
+  def workout_params
+    params.require(:workout).permit(:title, :duration, :description, exercise_ids: [], exercise_sets_attributes: [:weight, :intensity, :reps, :id])
   end
 
   def find
@@ -49,7 +52,7 @@ class WorkoutsController < ApplicationController
   end
 
   def addSet()
-    set = ExerciseSet.new(intensity: 1, exercise_id: params[:exercise_id],
+    set = ExerciseSet.new(intensity: 1, weight: 0, reps: 0, exercise_id: params[:exercise_id],
       workout_id: params[:workout_id])
 
     if set.save
