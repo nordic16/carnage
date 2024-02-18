@@ -33,7 +33,8 @@ class WorkoutsController < ApplicationController
   def update
     puts "A: #{params[:exercise_sets_attributes]}"
     if @workout.update(workout_params)
-      redirect_to workouts_path
+      # redirect_to workouts_path
+      redirect_to edit_workout_path(params[:id])
     end
   end
 

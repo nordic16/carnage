@@ -3,14 +3,6 @@
   
     <%= form_with model: @workout do |form|  %>
       <div class="grid grid-cols-2 grid-flow-col relative">
-        <%= render DialogComponent.new(title: "Add Exercise", close_button_text: "Add Exercises") do |b| %>
-          <%= form.collection_check_boxes :exercise_ids, Exercise.all, :id, :name, {multiple: true}, { class: " text-blue-400 bg-zinc-950" } do |f| %>
-            <div name="ex_choice" class="text-slate-100 flex justify-between">
-                <p id="ex_name"><%= f.text %></p>
-                <%= f.check_box %>
-            </div>
-          <% end %>
-        <% end %>
         <div>
           <p class="text-slate-100 text-xl font-bold">Title</p>
           <%= form.text_field :title, class: "text-3xl font-bold text-slate-100 bg-zinc-900 rounded-2xl"%><br>
@@ -21,14 +13,18 @@
 
         <div class="bg-slate-100 p-4 rounded-lg">
           <p class="text-2xl text-gray-700 font-bold">Exercises</p>
-          <ul id="ex_list" class="list-disc text-gray-700">
+          <%= form.collection_check_boxes :exercise_ids, Exercise.all, :id, :name, {multiple: true}, { class: " text-red-400 bg-zinc-950" } do |f| %>
+            <div class="flex justify-between">
+                <p><%= f.text %></p>
+                <%= f.check_box %>
+            </div>
+          <% end %>
           </ul>
         </div>
       </div>
 
       <div class="flex gap-5 justify-center mt-6">     
-        <button type="button" onclick="document.getElementById('dialog').showModal();" class="bg-blue-500 text-xl font-bold text-slate-100 mt-9 p-2 rounded-lg">Add exercises</button>
-          <%= form.submit class: "bg-red-500 text-xl font-bold text-slate-100 mt-9 p-2 rounded-lg" %>
+        <%= form.submit class: "bg-red-500 text-xl font-bold text-slate-100 mt-9 p-2 rounded-lg" %>
       </div>
     <% end %>
 </div>

@@ -3,9 +3,11 @@
       const dialog = document.getElementById('dialog');
       dialog.close();
   }
-
+  /*
   function addExercises() {
     closeModal();
+
+    // BRUH
     var dialog = document.getElementById('dialog');
     
     var list = document.getElementById('ex_list');
@@ -26,14 +28,17 @@
       }
     }
   }
+  */
 </script>
 
 <dialog id="dialog" class="bg-zinc-950 p-5 rounded-2xl w-1/5">
-  <div class="flex justify-between">
-    <p class="text-slate-100 text-2xl font-extrabold"><%= @title %></p>
-    <button type="button" onclick="closeModal();" class="font-bold text-red-500">x</button>
-  </div>
-  <br>
-  <%= content %>
-  <button type="button" onclick="addExercises();" class="text-slate-100 mt-3 bg-blue-400 w-full rounded-lg"><%= @close_button_text %></button>
+  <%= form_with url: "addExercises", method: :post do |f| %>
+    <div class="flex justify-between">
+      <p class="text-slate-100 text-2xl font-extrabold"><%= @title %></p>
+      <button type="button" onclick="closeModal();" class="font-bold text-red-500">x</button>
+    </div>
+    <br>
+    <%= content %>
+    <%= f.submit class: "text-slate-100 mt-3 bg-blue-400 w-full rounded-lg" %>
+  <% end %>
 </dialog>
