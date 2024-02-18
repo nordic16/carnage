@@ -26,13 +26,15 @@
           <% @workout.exercises.each do |ex| %>
             <%= render ExerciseViewComponent.new(exercise: ex, is_workout: true) do |b| %>
               <% if ex.exerciseType == Exercise::WEIGHT_REPS %>
-                  <div class="grid grid-cols-4 text-center gap-3">
+                <div class="grid grid-cols-5 text-center gap-3">
+                    <p>Order</p>
                     <p>Intensity</p>
                     <p>Weight (kg)</p>
                     <p>Reps</p>
                     <p></p>
-                    <% ExerciseSet.where(workout_id: @workout.id, exercise_id: ex.id).each do |x| %>
+                    <% ExerciseSet.where(workout_id: @workout.id, exercise_id: ex.id).each.with_index(1) do |x, index| %>
                       <%= form.fields_for :exercise_sets, x do |uform| %>
+                        <%= uform.label index %>
                         <%= uform.number_field :intensity, in:1..10 %>
                         <%= uform.number_field :weight %>
                         <%= uform.number_field :reps %>
