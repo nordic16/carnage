@@ -15,8 +15,8 @@
           <p class="text-2xl text-gray-700 font-bold">Exercises</p>
           <%= form.collection_check_boxes :exercise_ids, Exercise.all, :id, :name, {multiple: true}, { class: " text-red-400 bg-zinc-950" } do |f| %>
             <div class="flex justify-between">
-                <p><%= f.text %></p>
-                <%= f.check_box %>
+              <p><%= f.text %></p>
+              <%= f.check_box %>
             </div>
           <% end %>
           </ul>

@@ -18,7 +18,7 @@
       <% if @workouts.count > 0 %>
         <% @workouts.each do |workout| %>
           <% if current_user.id == workout.user_id %>
-            <div class="flex justify-between">
+            <div class="flex justify-between p-1">
               <%= link_to workout.title, edit_workout_path(workout.id), class: "text-2xl" %>
               <%= button_to "Delete Workout", workout_path(workout.id), method: :delete, class: "bg-red-400 hover:bg-red-500 text-slate-100 text-sm p-1 rounded-lg" %>
             </div>

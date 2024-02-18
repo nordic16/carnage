@@ -1,5 +1,4 @@
 <div class="md:container px-4 text-slate-100">
-
     <%= form_with model: @workout do |form| %>
       <div class="text-slate-100 flex justify-evenly">
         <div>
@@ -7,7 +6,8 @@
           <%= form.text_field :title, class: "bg-zinc-900 rounded-2xl mb-2" %><br>
 
           <%= form.label :description, class: "font-bold" %>
-          <%= form.text_field :description, class: "bg-zinc-900 rounded-2xl mb-2" %>
+          <%= form.text_field :description, class: "bg-zinc-900 rounded-2xl mb-2" %><br>
+          <%= form.submit "Update", class: "w-full mt-2 font-bold bg-red-400 font-bold rounded-lg" %>
         </div>
 
         <div class="w-2/3 bg-white rounded-lg text-gray-700 p-3">
@@ -43,11 +43,11 @@
                   <div class="flex gap-4 mt-3 w-full">
                     <button type="button" class="w-full text-slate-100 p-1 bg-blue-400 text-sm font-bold rounded-lg" data-action="click->workout#addSet">Add Set</button>
                   </div>
+              <% end %>
             <% end %>
           <% end %>
-        <% end %>
-      </div>
-    </div>
-    <%= form.submit %>
-  <% end %>
+
+          </div>
+        </div>
+      <% end %>
 </div>
