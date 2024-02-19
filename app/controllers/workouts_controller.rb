@@ -5,7 +5,10 @@ class WorkoutsController < ApplicationController
   end
 
   def destroy
+    # This is needed in order to circumvent errors.
+    @workout.exercises.map { |e| e.exercise_sets.destroy_all }
     @workout.destroy
+
     redirect_to workouts_path
   end
 
