@@ -6,13 +6,11 @@ Rails.application.routes.draw do
   get '/logbook(/:id)', to: "welcome#logbook"
 
   resources :workouts do
-    post '/edit/addSet', to: "workouts#addSet"
-    delete '/edit/removeSet', to: "workouts#removeSet"
-    delete '/edit/removeExercise', to: "workouts#removeExercise" 
+    delete '/edit/removeExercise', to: "workouts#remove_exercise", as: "remove_exercise" 
   end
 
   resources :exercises do
-    resources :exercise_sets, only: [:destroy]
+    resources :exercise_sets, only: [:destroy, :create]
   end
 
 

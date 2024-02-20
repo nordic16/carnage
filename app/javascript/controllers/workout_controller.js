@@ -7,6 +7,7 @@ export default class extends Controller {
   }
   
   // TODO: make code less repetitive
+  /*
   addSet() {
     let id = this.data.get("id");
     let prev = window.location.href
@@ -41,4 +42,5 @@ export default class extends Controller {
       window.location.replace(prev)
     })
   }
+  */
 }       

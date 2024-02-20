@@ -55,32 +55,14 @@ class WorkoutsController < ApplicationController
     raise ActionController::RoutingError.new(msg)
   end
 
-  def addSet()
-    set = ExerciseSet.new(intensity: 1, weight: 0, reps: 0, exercise_id: params[:exercise_id],
-      workout_id: params[:workout_id])
-
-    if set.save
-      puts "success!"
-
-    else
-      puts "something went wrong."  
-    end
-  end
-
-  def removeSet()
-    set = ExerciseSet.find(params[:set_id])
-    set.destroy
-  end
-
-  def removeExercise()
+  def remove_exercise()
     @workout = Workout.find(params[:workout_id])
-    exercise = Exercise.find(params[:exercise_id])
-    
-    exercise.exercise_sets.destroy_all
+    exercise = Exercise.find(params[:id])
+
+    exercise.exercise_sets.where(workout_id: @workout.id).destroy_all
     @workout.exercises.delete(exercise)
 
-    if @workout.save
-      puts "success!"
+    if @workout.save then redirect_back(fallback_location: '/')
     end
   end
 end
