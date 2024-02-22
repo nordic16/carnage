@@ -1,5 +1,5 @@
 <div class="md:container px-4 text-slate-100">
-    <%= form_with model: @workout do |form| %>
+    <%= form_with model: @workout, id: "test" do |form| %>
       <div class="text-slate-100 flex justify-evenly">
         <div>
           <%= form.label :title, class: "font-bold" %>
@@ -7,13 +7,14 @@
 
           <%= form.label :description, class: "font-bold" %>
           <%= form.text_field :description, class: "bg-zinc-900 rounded-2xl mb-2" %><br>
-          <%= form.submit "Update", class: "w-full mt-2 font-bold bg-red-500 font-bold rounded-lg" %>
+          <%= form.submit "Save", class: "w-full mt-2 font-bold bg-red-500 font-bold rounded-lg" %>
         </div>
 
         <div class="w-2/3 bg-white rounded-lg text-gray-700 p-3">
           <div class="flex justify-between mb-2">
             <p class="text-4xl font-extrabold">Exercises</p>
             <button type="button" onclick="document.getElementById('dialog').showModal();" class="text-sm p-2 font-bold bg-red-500 text-slate-100 rounded-lg">+ Add Exercise</button>
+            
             <%= render DialogComponent.new(title: "Add Exercise", close_button_text: "Save Changes") do |e| %>
               <%= form.collection_check_boxes :exercise_ids, Exercise.all, :id, :name, {multiple: true}, { class: " text-blue-400 bg-zinc-950" } do |f| %>
                 <div class="text-slate-100 flex justify-between">
@@ -22,34 +23,27 @@
                 </div>
               <% end %>
             <% end %>
-          </div> 
+          </div>
           <% @workout.exercises.each do |ex| %>
-            <%= render ExerciseViewComponent.new(exercise: ex, is_workout: true) do |b| %>
-              <% if ex.exerciseType == Exercise::WEIGHT_REPS %>
-                <div class="grid grid-cols-5 text-center gap-3">
+              <%= render ExerciseViewComponent.new(exercise: ex, is_workout: true) do |b| %>
+                <% if ex.exerciseType == Exercise::WEIGHT_REPS %>
+                  <div class="grid grid-cols-5 text-center gap-3">
                     <p>Order</p>
                     <p>Intensity</p>
                     <p>Weight (kg)</p>
                     <p>Reps</p>
                     <p></p>
                     <% ExerciseSet.where(workout_id: @workout.id, exercise_id: ex.id).each.with_index(1) do |x, index| %>
-                      <%= form.fields_for :exercise_sets, x do |uform| %>
-                        <%= uform.label index %>
-                        <%= uform.number_field :intensity, in:1..10 %>
-                        <%= uform.number_field :weight %>
-                        <%= uform.number_field :reps %>
-                        <%= button_to "x", exercise_exercise_set_path(x.id), method: :delete, class: "bg-red-500 text-slate-100 font-bold rounded-lg w-full h-full p-1" %>
-                      <% end %>
+                      <%= render 'exercise_sets/set', index: index, set: x %>
                     <% end %>
                   </div>
                   <div class="gap-4 mt-3 w-full">
-                    <%= button_to "Add set", exercise_exercise_sets_path(ex.id, workout_id: @workout.id), method: :post, class: "w-full bg-red-500 text-slate-100 rounded-lg p-1 font-bold text-sm" %>
+                    <%= button_to "Add set", exercise_exercise_sets_path(exercise_id: ex.id, workout_id: @workout.id), method: :post, class: "w-full bg-red-500 text-slate-100 rounded-lg p-1 font-bold text-sm" %>
                   </div>
-              <% end %>
+                <% end %>
             <% end %>
           <% end %>
-
-          </div>
         </div>
-      <% end %>
+      </div>
+    <% end %>
 </div>

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :exercises do
-    resources :exercise_sets, only: [:destroy, :create]
+    resources :exercise_sets, only: [:destroy, :create, :edit, :update]
   end
 
 

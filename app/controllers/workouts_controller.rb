@@ -30,11 +30,11 @@ class WorkoutsController < ApplicationController
     @workout.exercises.each do |ex| 
       ex.exercise_sets.build
     end
+    
     if current_user != @workout.user then not_found!("Not found") end
   end
 
   def update
-    puts "A: #{params[:exercise_sets_attributes]}"
     if @workout.update(workout_params)
       # redirect_to workouts_path
       redirect_to edit_workout_path(params[:id])
@@ -55,7 +55,7 @@ class WorkoutsController < ApplicationController
     raise ActionController::RoutingError.new(msg)
   end
 
-  def remove_exercise()
+  def remove_exercise
     @workout = Workout.find(params[:workout_id])
     exercise = Exercise.find(params[:id])
 
