@@ -27,16 +27,15 @@
           <% @workout.exercises.each do |ex| %>
               <%= render ExerciseViewComponent.new(exercise: ex, is_workout: true) do |b| %>
                 <% if ex.exerciseType == Exercise::WEIGHT_REPS %>
-                  <div class="grid grid-cols-5 text-center gap-3">
-                    <p>Order</p>
+                  <div class="flex flex-row justify-around"> <!-- This design is terrible, but it "works" -->
                     <p>Intensity</p>
                     <p>Weight (kg)</p>
                     <p>Reps</p>
                     <p></p>
-                    <% ExerciseSet.where(workout_id: @workout.id, exercise_id: ex.id).each.with_index(1) do |x, index| %>
-                      <%= render 'exercise_sets/set', index: index, set: x %>
-                    <% end %>
                   </div>
+                  <% ExerciseSet.where(workout_id: @workout.id, exercise_id: ex.id).each do |x| %>
+                    <%= render 'exercise_sets/set', set: x %>
+                  <% end %>
                   <div class="gap-4 mt-3 w-full">
                     <%= button_to "Add set", exercise_exercise_sets_path(exercise_id: ex.id, workout_id: @workout.id), method: :post, class: "w-full bg-red-500 text-slate-100 rounded-lg p-1 font-bold text-sm" %>
                   </div>
