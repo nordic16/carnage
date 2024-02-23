@@ -1,10 +1,11 @@
 class ExerciseSetsController < ApplicationController
   def destroy
-    @set = ExerciseSet.find(params[:exercise_id])
+    @set = ExerciseSet.find(params[:id])
     @set.destroy
-    
+
     redirect_back(fallback_location: '/')
   end
+
 
   def edit
     @index = params[:index]
@@ -14,12 +15,9 @@ class ExerciseSetsController < ApplicationController
   def update
     @set = ExerciseSet.find(params[:set_id])
 
-    respond_to do |format|
-      if @set.update(exercise_sets_params)
-        format.turbo_stream { render partial: "exercise_sets/set", locals: {set: @set} }
-      end
+    if @set.update(exercise_sets_params)
+      render @set
     end
-
   end
   
   def create

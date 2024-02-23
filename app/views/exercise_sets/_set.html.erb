@@ -1,8 +1,0 @@
-<%= turbo_frame_tag dom_id(set, :edit), class: "contents" do %>
-  <div class="flex flex-row justify-around">
-    <p><%= set.intensity %></p>
-    <p><%= set.weight %></p>
-    <p><%= set.reps %></p>
-    <%= link_to "Edit", edit_exercise_exercise_set_path(set_id: set.id, exercise_id: set.exercise.id) %>
-  </div>
-<% end %>

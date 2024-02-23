@@ -1,0 +1,9 @@
+<%= turbo_frame_tag dom_id(exercise_set, :edit), class: "contents" do %>
+  <div class="flex flex-row justify-around">
+    <p><%= exercise_set.intensity %></p>
+    <p><%= exercise_set.weight %></p>
+    <p><%= exercise_set.reps %></p>
+    <%= link_to "Edit", edit_exercise_exercise_set_path(set_id: exercise_set.id, exercise_id: exercise_set.exercise.id) %>
+    <%= button_to "- Remove", exercise_exercise_set_path(id: exercise_set.id, exercise_id: exercise_set.exercise.id), method: :delete, data: {turbo_frame: "exercises"} %>
+  </div>
+<% end %>
