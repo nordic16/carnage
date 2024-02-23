@@ -12,10 +12,10 @@ Exercise.destroy_all
 MuscleGroup.destroy_all
 
 
-upper_back = MuscleGroup.find_or_create_by!(name: "Upper Back").first
-lats = MuscleGroup.find_or_create_by!(name: "Lats").first
-delts = MuscleGroup.find_or_create_by!(name: "Delts").first
-chest = MuscleGroup.find_or_create_by!(name: "Chest").first
+upper_back = MuscleGroup.find_or_create_by!(name: "Upper Back")
+lats = MuscleGroup.find_or_create_by!(name: "Lats")
+delts = MuscleGroup.find_or_create_by!(name: "Delts")
+chest = MuscleGroup.find_or_create_by!(name: "Chest")
 
 # Exercises from my pull day lmfao
 Exercise.create!([{

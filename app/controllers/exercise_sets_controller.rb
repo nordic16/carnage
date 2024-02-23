@@ -1,6 +1,7 @@
 class ExerciseSetsController < ApplicationController
   def destroy
     @set = ExerciseSet.find(params[:id])
+
     @set.destroy
 
     redirect_back(fallback_location: '/')
@@ -9,11 +10,11 @@ class ExerciseSetsController < ApplicationController
 
   def edit
     @index = params[:index]
-    @set = ExerciseSet.find(params[:set_id])
+    @set = ExerciseSet.find(params[:id])
   end
 
   def update
-    @set = ExerciseSet.find(params[:set_id])
+    @set = ExerciseSet.find(params[:id])
 
     if @set.update(exercise_sets_params)
       render @set

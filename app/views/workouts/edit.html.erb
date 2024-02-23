@@ -1,3 +1,5 @@
+<%= turbo_stream_from :exercises %>
+
 <div class="md:container px-4 text-slate-100">
     <%= form_with model: @workout, id: "test" do |form| %>
       <div class="text-slate-100 flex justify-evenly">
@@ -14,7 +16,8 @@
           <div class="flex justify-between mb-2">
             <p class="text-4xl font-extrabold">Exercises</p>
             <button type="button" onclick="document.getElementById('dialog').showModal();" class="text-sm p-2 font-bold bg-red-500 text-slate-100 rounded-lg">+ Add Exercise</button>
-            
+          </div>
+          <%= turbo_frame_tag "exercises" do %>   
             <%= render DialogComponent.new(title: "Add Exercise", close_button_text: "Save Changes") do |e| %>
               <%= form.collection_check_boxes :exercise_ids, Exercise.all, :id, :name, {multiple: true}, { class: " text-blue-400 bg-zinc-950" } do |f| %>
                 <div class="text-slate-100 flex justify-between">
@@ -23,28 +26,21 @@
                 </div>
               <% end %>
             <% end %>
-          </div>
-          <% @workout.exercises.each do |ex| %>
-              <%= render ExerciseViewComponent.new(exercise: ex, is_workout: true) do |b| %>
-                <% if ex.exerciseType == Exercise::WEIGHT_REPS %>
-                  <div class="flex flex-row justify-around"> <!-- This design is terrible, but it "works" -->
-                    <p>Intensity</p>
-                    <p>Weight (kg)</p>
-                    <p>Reps</p>
-                    <p></p>
-                  </div>
-                  <%= turbo_frame_tag "sets", class: "contents" do %>
+
+            <% @workout.exercises.each do |ex| %>
+                <%= render ExerciseViewComponent.new(exercise: ex, is_workout: true) do |b| %>
+                  <% if ex.exerciseType == Exercise::WEIGHT_REPS %>
                     <% ExerciseSet.where(workout_id: @workout.id, exercise_id: ex.id).each do |x| %>
                       <%= render x %>
                     <% end %>
+                    <div class="gap-4 mt-3 w-full">
+                      <%= button_to "Add set", exercise_exercise_sets_path(exercise_id: ex.id, workout_id: @workout.id), method: :post, class: "w-full bg-red-500 text-slate-100 rounded-lg p-1 font-bold text-sm" %>
+                    </div>
                   <% end %>
-                  <div class="gap-4 mt-3 w-full">
-                    <%= button_to "Add set", exercise_exercise_sets_path(exercise_id: ex.id, workout_id: @workout.id), method: :post, class: "w-full bg-red-500 text-slate-100 rounded-lg p-1 font-bold text-sm" %>
-                  </div>
                 <% end %>
+              <% end %>
             <% end %>
-          <% end %>
+          </div>
         </div>
-      </div>
-    <% end %>
-</div>
+      <% end %>
+  </div>
