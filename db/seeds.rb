@@ -9,11 +9,13 @@
 #   end
 
 Exercise.destroy_all
+MuscleGroup.destroy_all
 
-upper_back = MuscleGroup.where(name: "Upper Back").first
-lats = MuscleGroup.where(name: "Lats").first
-delts = MuscleGroup.where(name: "Delts").first
-chest = MuscleGroup.where(name: "Chest").first
+
+upper_back = MuscleGroup.find_or_create_by!(name: "Upper Back").first
+lats = MuscleGroup.find_or_create_by!(name: "Lats").first
+delts = MuscleGroup.find_or_create_by!(name: "Delts").first
+chest = MuscleGroup.find_or_create_by!(name: "Chest").first
 
 # Exercises from my pull day lmfao
 Exercise.create!([{
@@ -83,3 +85,4 @@ Exercise.create!([{
 ])
 
 puts "Created #{Exercise.count} exercises."
+puts "Created #{MuscleGroup.count} muscle groups."
