@@ -1,0 +1,3 @@
+<%= @exercises.each do |exercise| %>
+	<%= turbo_stream.append "exercises", partial: "exercises/exercise", locals: { exercise: exercise } %>
+<% end %>

@@ -37,12 +37,18 @@ class WorkoutsController < ApplicationController
   def update
     if @workout.update(workout_params)
       # redirect_to workouts_path
-      redirect_to edit_workout_path(params[:id])
+      @exercises = params[:workout][:exercise_ids].map {|ex| Exercise.find(ex)}
+
+      # exercise added
+      respond_to do |format| 
+        format.html { redirect_to edit_workout_path(params[:id]) }
+        format.turbo_stream
+      end
     end
   end
 
   def workout_params
-    params.require(:workout).permit(:title, :duration, :description, exercise_ids: [], exercise_sets_attributes: [:weight, :intensity, :reps, :id])
+    params.require(:workout).permit(:title, :duration, :description, exercise_ids: [])
   end
 
   def find
@@ -57,12 +63,18 @@ class WorkoutsController < ApplicationController
 
   def remove_exercise
     @workout = Workout.find(params[:workout_id])
-    exercise = Exercise.find(params[:id])
+    @id = params[:id]
+    exercise = Exercise.find(@id)
+
 
     exercise.exercise_sets.where(workout_id: @workout.id).destroy_all
     @workout.exercises.delete(exercise)
 
-    if @workout.save then redirect_back(fallback_location: '/')
+    if @workout.save
+      respond_to do |format|
+        format.html { redirect_back(fallback_location: '/') }
+        format.turbo_stream { }
+      end
     end
   end
 end

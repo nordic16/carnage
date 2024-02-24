@@ -1,10 +1,14 @@
 class ExerciseSetsController < ApplicationController
   def destroy
     @set = ExerciseSet.find(params[:id])
+    id = @set.workout_id
+
+    respond_to do |format|
+      format.html { redirect_to edit_workout_path(id) }
+      format.turbo_stream 
+    end
 
     @set.destroy
-
-    redirect_back(fallback_location: '/')
   end
 
 
@@ -22,11 +26,17 @@ class ExerciseSetsController < ApplicationController
   end
   
   def create
-    @set = ExerciseSet.new(workout_id: params[:workout_id], exercise_id: params[:exercise_id], 
+    @exercise_id = params[:exercise_id] 
+
+    @set = ExerciseSet.new(workout_id: params[:workout_id], exercise_id: @exercise_id, 
       intensity: 1, weight: 0, reps: 0)
+
     
     if @set.save
-      redirect_back(fallback_location: '/')
+      respond_to do |format|
+        format.html { redirect_to edit_workout_path(@set.workout_id) }
+        format.turbo_stream
+      end
     end
   end
 
