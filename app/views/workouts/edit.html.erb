@@ -28,7 +28,7 @@
                   <% end %>
                 <% end %>
                 <div class="gap-4 mt-3 w-full">
-                  <%= button_to "Add set", exercise_exercise_sets_path(exercise_id: ex.id, workout_id: @workout.id), data: {turbo_method: :post}, class: "w-full bg-red-500 text-slate-100 rounded-lg p-1 font-bold text-sm" %>
+                  <%= button_to "Add set", exercise_exercise_sets_path(exercise_id: ex.id, workout_id: @workout.id), class: "w-full bg-red-500 text-slate-100 rounded-lg p-1 font-bold text-sm" %>
                 </div>
               <% end %>
             <% end %>
