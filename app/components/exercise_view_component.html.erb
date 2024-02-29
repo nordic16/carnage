@@ -1,11 +1,6 @@
 <div class="bg-slate-100 text-gray-700 mb-2 p-1 rounded-lg"> 
   <div class="flex justify-between">    <!--Image in the future-->
     <p class="font-bold text-md"><%= @exercise.name %></p>
-    <% if @is_workout %>
-      <div>
-        <%= button_to "x", helpers.workout_remove_exercise_path(id: @exercise.id, workout_id: params[:id]), method: :delete %> 
-      </div>
-    <% end %>
   </div>
   <% @exercise.muscle_groups.each do |mg| %>
     <p class="ml-2 text-sm inline><%= mg.name %></p>
@@ -15,10 +10,9 @@
     <p class="ml-2 text-sm"> (<%= @exercise.emphasis %>)</p>
   <% end %>
 
-  <% if @exercise.user_id == helpers.current_user.id %>
-    <div class="gap-2 mt-2 ml-2">
+  
+  <div class="gap-2 mt-2 ml-2">
       <%= content %>
-    </div>
-  <% end %>
+  </div>
 </div>
 

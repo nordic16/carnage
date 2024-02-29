@@ -77,4 +77,20 @@ class WorkoutsController < ApplicationController
       end
     end
   end
+
+
+  def add_exercise
+    @workout = Workout.find(params[:workout_id])
+    @exercise = Exercise.find(params[:exercise_id])
+
+    @workout.exercises.append(@exercise)
+
+    if @workout.save
+      respond_to do |format|
+        format.html { redirect_back(fallback_location: '/') }
+        format.turbo_stream { render turbo_stream: turbo_stream.append("exercises", partial: "exercises/exercise", locals: {exercise: @exercise, is_workout: true})}
+      end
+    end
+  end
+
 end

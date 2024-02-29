@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :workouts do
     delete '/edit/removeExercise', to: "workouts#remove_exercise", as: "remove_exercise" 
+    patch 'edit/addExercise', to: "workouts#add_exercise", as: "add_exercise"
   end
 
   resources :exercises do
