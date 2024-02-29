@@ -69,12 +69,13 @@ class WorkoutsController < ApplicationController
     exercise.exercise_sets.where(workout_id: @workout.id).destroy_all
     @workout.exercises.delete(exercise)
 
+
     if @workout.save
       respond_to do |format|
         format.html { redirect_back(fallback_location: '/') }
         format.turbo_stream do
-          render turbo_stream: turbo_stream.remove("edit_exercise#{params[:exercise_id]}")
-        end 
+          @id = params[:exercise_id]
+        end
       end
     end
   end
