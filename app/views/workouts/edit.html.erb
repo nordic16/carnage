@@ -1,28 +1,24 @@
 <%= turbo_stream_from :exercises %>
 
 <div class="md:container px-4 text-slate-100">
-  <%= form_with model: @workout do |form| %>
-     <div class="w-full rounded-lg text-gray-700 p-3">
-        <div class="flex justify-between mb-2">
-          <p class="text-white text-4xl font-extrabold">Exercises</p>
-          <button type="button" onclick="document.getElementById('dialog').showModal();" class="text-sm p-1 font-bold bg-red-500 text-slate-100 rounded-lg">+ Add Exercise</button>
-        </div>
-      <%= turbo_frame_tag "exercises" do %>      
-        <%= render DialogComponent.new(title: "Add Exercise", close_button_text: "Save Changes") do |e| %>
-          
-          <% Exercise.all.each do |ex| %>
-            <%= render ExerciseViewComponent.new(exercise: ex, is_workout: false) do %>
-              <%= button_to "Add Exercise", workout_add_exercise_path(workout_id: @workout.id, exercise_id: ex.id), method: :patch, class: "bg-red-500" %>
-            <% end %>
-          <% end %>
-          
-        <% end %>
-
-        <% @workout.exercises.each do |ex| %>
-          <%= turbo_frame_tag dom_id(ex, :edit) do %>
-            <%= render ex, is_workout: true %>              
+    <div class="w-full rounded-lg text-gray-700 p-3">
+      <div class="flex justify-between mb-2">
+        <p class="text-white text-4xl font-extrabold">Exercises</p>
+        <button type="button" onclick="document.getElementById('dialog').showModal();" class="text-sm p-1 font-bold bg-red-500 text-slate-100 rounded-lg">+ Add Exercise</button>
+      </div>
+    <%= turbo_frame_tag "exercises" do %>      
+      <%= render DialogComponent.new(title: "Add Exercise", close_button_text: "Save Changes") do |e| %>
+        
+        <% Exercise.all.each do |ex| %>
+          <%= render ExerciseViewComponent.new(exercise: ex) do %>
+            <%= button_to "Add Exercise", workout_add_exercise_path(workout_id: @workout.id, exercise_id: ex.id), method: :patch, class: "bg-red-500 p-1 text-white rounded-lg text-sm" %>
           <% end %>
         <% end %>
+        
       <% end %>
-  <% end %>
+
+      <% @workout.exercises.each do |ex| %>
+        <%= render ex %>              
+      <% end %>
+    <% end %>
   </div>

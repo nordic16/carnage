@@ -63,8 +63,7 @@ class WorkoutsController < ApplicationController
 
   def remove_exercise
     @workout = Workout.find(params[:workout_id])
-    @id = params[:exercise_id]
-    exercise = Exercise.find(@id)
+    exercise = Exercise.find(params[:exercise_id])
 
 
     exercise.exercise_sets.where(workout_id: @workout.id).destroy_all
@@ -73,7 +72,9 @@ class WorkoutsController < ApplicationController
     if @workout.save
       respond_to do |format|
         format.html { redirect_back(fallback_location: '/') }
-        format.turbo_stream { }
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.remove("edit_exercise#{params[:exercise_id]}")
+        end 
       end
     end
   end

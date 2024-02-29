@@ -1,13 +1,15 @@
-<%= render ExerciseViewComponent.new(exercise: exercise, is_workout: is_workout) do %>
-  <% if exercise.exerciseType == Exercise::WEIGHT_REPS %>
-    <%= turbo_frame_tag dom_id(exercise, "sets") do %>
-      <% ExerciseSet.where(workout_id: @workout.id, exercise_id: exercise.id).each do |x| %>
-        <%= render x %>
+<%= turbo_frame_tag dom_id(exercise, :edit) do %>
+  <%= render ExerciseViewComponent.new(exercise: exercise) do %>
+    <% if exercise.exerciseType == Exercise::WEIGHT_REPS %>
+      <%= turbo_frame_tag dom_id(exercise, "sets") do %>
+        <% ExerciseSet.where(workout_id: @workout.id, exercise_id: exercise.id).each do |x| %>
+          <%= render x %>
+        <% end %>
       <% end %>
+      <div class="gap-4 mt-3 w-full">
+        <%= button_to "Add set", exercise_exercise_sets_path(exercise_id: exercise.id, workout_id: @workout.id), class: "w-full bg-red-500 text-slate-100 rounded-lg p-1 font-bold text-sm" %>
+        <%= button_to "x", workout_remove_exercise_path(exercise_id: exercise.id, workout_id: @workout.id), method: :delete %> 
+      </div>
     <% end %>
-    <div class="gap-4 mt-3 w-full">
-      <%= button_to "Add set", exercise_exercise_sets_path(exercise_id: exercise.id, workout_id: @workout.id), class: "w-full bg-red-500 text-slate-100 rounded-lg p-1 font-bold text-sm" %>
-      <%= button_to "x", workout_remove_exercise_path(exercise_id: exercise.id, workout_id: @workout.id), method: :delete %> 
-    </div>
   <% end %>
 <% end %>
