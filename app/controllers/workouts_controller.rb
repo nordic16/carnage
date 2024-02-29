@@ -63,7 +63,7 @@ class WorkoutsController < ApplicationController
 
   def remove_exercise
     @workout = Workout.find(params[:workout_id])
-    @id = params[:id]
+    @id = params[:exercise_id]
     exercise = Exercise.find(@id)
 
 
