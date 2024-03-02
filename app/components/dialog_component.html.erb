@@ -31,12 +31,12 @@
   */
 </script>
 
-<dialog id="dialog" class="bg-zinc-950 rounded-3xl w-1/5 outline outline-2 outline-red-400">
-    <div class="flex justify-between border-b-4 border-red-500">
+<dialog id="dialog" class="p-2 bg-zinc-950 rounded-xl w-1/5 outline outline-4 outline-teal-300">
+    <div class="flex justify-between">
       <p class="text-slate-100 text-2xl font-extrabold mt-1 ml-1"><%= @title %></p>
     </div>
     <br>
-    <div class="px-1 mb-3 mx-auto w-full text-center">
+    <div class="px-1 mb-3 mx-auto w-full text-center max-h-64">
       <%= content %>
     </div>
 </dialog>

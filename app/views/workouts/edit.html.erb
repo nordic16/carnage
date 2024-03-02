@@ -7,18 +7,21 @@
         <button type="button" onclick="document.getElementById('dialog').showModal();" class="text-sm p-2 font-bold outline outline-4 outline-teal-400 text-teal-400 hover:text-teal-300 rounded-xl">+ Add Exercise</button>
       </div>
     <%= turbo_frame_tag "exercises" do %>      
-      <%= render DialogComponent.new(title: "Add Exercise", close_button_text: "Save Changes") do |e| %>
-        
-        <% Exercise.all.each do |ex| %>
-          <%= render ExerciseViewComponent.new(exercise: ex) do %>
-            <%= button_to "Add Exercise", workout_add_exercise_path(workout_id: @workout.id, exercise_id: ex.id), method: :patch, class: "bg-red-500 p-1 text-white rounded-lg text-sm" %>
-          <% end %>
-        <% end %>
-        
+      <% @workout.exercises.each do |ex| %>
+        <%= render ex, is_workout: true %>              
       <% end %>
 
-      <% @workout.exercises.each do |ex| %>
-        <%= render ex %>              
+      <%= render DialogComponent.new(title: "Add Exercise", close_button_text: "Save Changes") do |e| %>
+        <% Exercise.all.each do |ex| %>
+          <div class="mb-3 bg-[#212125] rounded-lg p-2 mx-2">
+            <p class="text-white font-bold"><%= ex.name %></p>
+            <p class="text-white text-center"><%= ex.emphasis %></p>
+            <%= button_to "Add Exercise", workout_add_exercise_path(workout_id: @workout.id, exercise_id: ex.id), method: :patch, class: "outline outline-4 outline-teal-400 text-teal-400 font-bold hover:text-teal-300 p-2 rounded-xl text-sm mt-3" %>
+          </div>
+        <% end %>  
       <% end %>
+
+
+
     <% end %>
   </div>

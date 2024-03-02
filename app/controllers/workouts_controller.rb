@@ -65,17 +65,13 @@ class WorkoutsController < ApplicationController
     @workout = Workout.find(params[:workout_id])
     exercise = Exercise.find(params[:exercise_id])
 
-
     exercise.exercise_sets.where(workout_id: @workout.id).destroy_all
     @workout.exercises.delete(exercise)
-
 
     if @workout.save
       respond_to do |format|
         format.html { redirect_back(fallback_location: '/') }
-        format.turbo_stream do
-          @id = params[:exercise_id]
-        end
+        format.turbo_stream { render turbo_stream: turbo_stream.remove("edit_exercise_#{params[:exercise_id]}") }
       end
     end
   end
