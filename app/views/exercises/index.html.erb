@@ -1,11 +1,13 @@
 <div class="md:container">
-  <div class="mx-auto bg-white max-h-[48rem] rounded-lg p-3 overflow-auto">
-    <p class="text-4xl mb-2 text-gray-700 font-extrabold">Exercises</p>
+  <div class="mx-auto max-h-[48rem] rounded-lg p-3 overflow-auto">
+    <p class="text-4xl mb-2 text-white font-extrabold">Exercises</p>
     
     <div class="ml-2">
       <% @exercises.each do |ex| %>
-        <%= render ExerciseViewComponent.new(exercise: ex, is_workout: false) do |b| %>
-          <%= link_to "Edit Exercise", edit_exercise_path(ex.id), class: "bg-red-400 hover:bg-red-500 text-slate-100 text-sm p-1 rounded-lg" %>
+        <%= render ex, is_workout: false do |b| %>
+          <div class="flex justify-center">
+            <%= link_to "Edit Exercise", edit_exercise_path(ex.id), class: "outline hover:text-teal-300 outline-400 outline-teal-400 text-teal-400 rounded-xl p-2 font-bold text-sm" %>
+          </div>
         <% end %>
       <% end %>
     </div>
