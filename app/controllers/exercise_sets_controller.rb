@@ -26,9 +26,10 @@ class ExerciseSetsController < ApplicationController
   end
   
   def create
+    exercise = Exercise.find(params[:exercise_id])
     @exercise_id = params[:exercise_id] 
 
-    @set = ExerciseSet.new(workout_id: params[:workout_id], exercise_id: @exercise_id, 
+    @set = exercise.exercise_sets.new(workout_id: params[:workout_id], 
       intensity: 1, weight: 0, reps: 0)
 
     
