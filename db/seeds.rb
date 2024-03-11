@@ -11,7 +11,6 @@
 Exercise.destroy_all
 MuscleGroup.destroy_all
 
-
 upper_back = MuscleGroup.find_or_create_by!(name: "Upper Back")
 lats = MuscleGroup.find_or_create_by!(name: "Lats")
 delts = MuscleGroup.find_or_create_by!(name: "Delts")
