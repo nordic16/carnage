@@ -20,7 +20,7 @@
           <% if current_user.id == workout.user_id %>
             <div class="flex justify-between p-1">
               <%= link_to workout.title, edit_workout_path(workout.id), class: "text-2xl" %>
-              <%= button_to "Delete Workout", workout_path(workout.id), method: :delete, class: "bg-red-400 hover:bg-red-500 text-slate-100 text-sm p-1 rounded-lg" %>
+              <%= button_to "Delete Workout", workout_path(workout.id), method: :delete, class: "text-sm p-2 font-bold outline outline-4 outline-red-400 text-red-400 hover:text-red-300 rounded-xl" %>
             </div>
 
           <% else %>
@@ -36,9 +36,9 @@
     </div>
 
     <% if @user == current_user %>
-      <div class="inline-flex align-bottom gap-3 mt-3">
+      <div class="inline-flex align-bottom gap-3 mt-3 border-t-4 border-teal-400 w-full">
       <!--<button class="bg-red-300 text-slate-100 text-center p-1 rounded-xl">See more</button> -->
-        <%= link_to "New workout", new_workout_path, class: "bg-red-400 text-slate-100 text-center p-1 rounded-lg" %>
+        <%= link_to "New workout", new_workout_path, class: "text-sm p-2 mt-4 font-bold outline outline-4 outline-teal-400 text-teal-400 hover:text-teal-300 rounded-xl" %>
       </div>
     <% end %>
   </div>
