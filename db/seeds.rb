@@ -21,7 +21,7 @@ Exercise.create!([{
   name: "Wide Grip T-Bar Row",
   description: "Wide grip t-bar row",
   emphasis: "Traps, Rhomboids, Rear delts",
-  muscle_groups: [upper_back],
+  muscle_group_ids: [upper_back.id],
   user_id: 1,
   exerciseType: Exercise::WEIGHT_REPS
   },

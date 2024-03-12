@@ -4,7 +4,7 @@
       <p class="font-bold text-md"><%= exercise.name %></p>
     </div>
     <% exercise.muscle_groups.each do |mg| %>
-      <p class="ml-2 text-sm inline><%= mg.name %></p>
+      <p class="ml-2 text-sm"><%= mg.name %></p>
     <% end %>
 
     <% if exercise.emphasis.presence %>
