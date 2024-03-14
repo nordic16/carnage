@@ -1,12 +1,12 @@
   <div class"container mx-auto w-screen">
-    <div class="mx-auto text-center flex items-center justify-center mt-10">
+    <div class="mx-auto text-center flex items-center justify-center">
       <img src="/assets/icon.png" class="w-[30px] sm:w-[70px]"></img>
       <p class="text-white ml-4 font-bold font-montserrat uppercase text-3xl sm:text-6xl">Carnage</p>
     </div>
     <br>
     <div class="mx-auto justify-center flex gap-5 sm:gap-10 font-montserrat">
       <%= link_to "New Workout", new_workout_path, class: "rounded-3xl hover:bg-carnage-red-pressed transition ease-in-out py-2 w-44 text-center text-white bg-carnage-red text-lg" %>
-      <%= link_to "Dashboard", workouts_path, class: "rounded-3xl py-2 w-44 text-center hover:bg-carnage-secondary-pressed transition ease-in-out text-white bg-carnage-secondary text-lg" %>
+      <%= link_to "Dashboard", '/logbook/', class: "rounded-3xl py-2 w-44 text-center hover:bg-carnage-secondary-pressed transition ease-in-out text-white bg-carnage-secondary text-lg" %>
     </div>
   </div>
  
