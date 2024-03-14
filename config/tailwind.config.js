@@ -12,6 +12,20 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        montserrat: ['montserrat', 'sans-serif']
+      },
+      colors: {
+        carnage: {
+          main: '#1a1a1aff',
+          secondary: {
+            DEFAULT: '#1e1e1eff',
+            pressed: '#2d2d2dff'
+          },
+          red: {
+            DEFAULT: '#ff5a5aff',
+            pressed: '#ff6969ff'
+          }
+        }
       },
     },
     container: {
