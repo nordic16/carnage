@@ -1,13 +1,19 @@
 <nav class="bg-carnage-secondary h-20 mb-10">
   <div class="flex h-full justify-around items-center">
-    <div class="flex gap-5 sm:gap-10">
+    <% if user_signed_in? %>
+      <div class="flex gap-5 sm:gap-10">
+        <%= link_to image_tag("logo-button.png", width: 45), '/' %>
+        <%= link_to image_tag("dashboard-button.png", width: 45), logbook_path(id: current_user.id) %>
+      </div>
+      <div class="flex gap-5 sm:gap-10">
+        <%= link_to image_tag("settings-button.png", width: 45), '/' %>
+        <%= link_to image_tag("user-button.png", width: 45), '/' %>
+        <%= button_to "a", destroy_user_session_path, method: :delete %>
+      </div>
+    <% else %>
       <%= link_to image_tag("logo-button.png", width: 45), '/' %>
-      <%= link_to image_tag("dashboard-button.png", width: 45), logbook_path(id: current_user.id) %>
-    </div>
-    <div class="flex gap-5 sm:gap-10">
-      <%= link_to image_tag("settings-button.png", width: 45), '/' %>
-      <%= link_to image_tag("user-button.png", width: 45), '/' %>
-    </div>
+      <%= link_to image_tag("user-button.png", width: 45), new_user_session_path %>
+    <% end %>
   </div>
 </nav>
 

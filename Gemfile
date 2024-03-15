@@ -73,3 +73,4 @@ gem "view_component"
 
 gem "faker", "~> 3.2"
 gem "htmlbeautifier"
+gem "gemoji"

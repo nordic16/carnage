@@ -12,7 +12,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
-        montserrat: ['montserrat', 'sans-serif']
+        montserrat: ['montserrat', 'sans-serif'],
       },
       colors: {
         carnage: {

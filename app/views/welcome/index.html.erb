@@ -4,9 +4,17 @@
       <p class="text-white ml-4 font-bold font-montserrat uppercase text-3xl sm:text-6xl">Carnage</p>
     </div>
     <br>
-    <div class="mx-auto justify-center flex gap-5 sm:gap-10 font-montserrat">
-      <%= link_to "New Workout", new_workout_path, class: "rounded-3xl hover:bg-carnage-red-pressed transition ease-in-out py-2 w-44 text-center text-white bg-carnage-red text-lg" %>
-      <%= link_to "Dashboard", logbook_path(id: current_user.id), class: "rounded-3xl py-2 w-44 text-center hover:bg-carnage-secondary-pressed transition ease-in-out text-white bg-carnage-secondary text-lg" %>
+    <div class="mx-auto justify-center flex gap-5 sm:gap-10 font-montserrat font-semibold">
+      <% if user_signed_in? %>
+        <%= link_to "New Workout", new_workout_path, class: "rounded-3xl hover:bg-carnage-red-pressed transition ease-in-out py-2 w-44 text-center text-white bg-carnage-red text-lg" %>
+        <%= link_to "Dashboard", logbook_path(id: current_user.id), class: "rounded-3xl py-2 w-44 text-center hover:bg-carnage-secondary-pressed transition ease-in-out text-white bg-carnage-secondary text-lg" %>
+      
+      <% else %>
+        <div class="bg-carnage-secondary w-[400px] rounded-3xl">
+          <p></p>
+          <p class="text-white py-2 text-center font-montserrat font-semibold">📖 New here? Feel free to check out #about</p>
+        </div>
+      <% end %>
     </div>
   </div>
  
