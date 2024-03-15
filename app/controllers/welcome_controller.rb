@@ -9,6 +9,7 @@ class WelcomeController < ApplicationController
   end
 
   def logbook
+    puts "params: #{params}"
     @user = User.find(params[:id])
     @workouts = @user.workouts
 

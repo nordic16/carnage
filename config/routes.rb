@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
   get '/about', to: "welcome#about"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  get '/logbook(/:id)', to: "welcome#logbook"
+  get '/logbook', to: "welcome#logbook", as: "logbook"
 
   resources :workouts do
     delete '/edit/removeExercise', to: "workouts#remove_exercise", as: "remove_exercise" 

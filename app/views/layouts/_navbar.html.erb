@@ -2,11 +2,11 @@
   <div class="flex h-full justify-around items-center">
     <div class="flex gap-5 sm:gap-10">
       <%= link_to image_tag("logo-button.png", width: 45), '/' %>
-      <%= link_to image_tag("dashboard-button.png", width: 45), '/logbook/' %>
+      <%= link_to image_tag("dashboard-button.png", width: 45), logbook_path(id: current_user.id) %>
     </div>
     <div class="flex gap-5 sm:gap-10">
       <%= link_to image_tag("settings-button.png", width: 45), '/' %>
-      <%= link_to image_tag("user-button.png", width: 45), '/logbook/' %>
+      <%= link_to image_tag("user-button.png", width: 45), '/' %>
     </div>
   </div>
 </nav>
