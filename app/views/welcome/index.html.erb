@@ -10,9 +10,8 @@
         <%= link_to "Dashboard", logbook_path(id: current_user.id), class: "rounded-3xl py-2 w-44 text-center hover:bg-carnage-secondary-pressed transition ease-in-out text-white bg-carnage-secondary text-lg" %>
       
       <% else %>
-        <div class="bg-carnage-secondary w-[400px] rounded-3xl">
-          <p></p>
-          <p class="text-white py-2 text-center font-montserrat font-semibold">📖 New here? Feel free to check out #about</p>
+        <div class="bg-carnage-secondary w-[400px]">
+          <p class="text-white py-2 text-center rounded-3xl font-montserrat font-semibold outline outline-dashed outline-carnage-red">New here? Feel free to check out #about</p>
         </div>
       <% end %>
     </div>
