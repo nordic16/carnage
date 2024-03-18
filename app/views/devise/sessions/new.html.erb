@@ -1,4 +1,4 @@
-<div class="bg-carnage-secondary p-6 relative text-center font-montserrat mx-auto w-[500px] rounded-3xl">
+<div class="bg-carnage-secondary p-6 text-center font-montserrat mx-auto w-[500px] rounded-3xl">
   <div class="mx-auto text-center flex items-center justify-center">
     <img src="/assets/icon.png" class="w-[30px] sm:w-[60px]"></img>
     <p class="text-white ml-4 font-bold font-montserrat text-3xl sm:text-5xl">Sign in</p>
@@ -6,10 +6,10 @@
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="grid grid-cols-5 gap-4 mt-4 items-center">
-      <%= f.label :email, class: "text-slate-100 font-semibold text-left align-center" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "bg-carnage-main col-span-4 align-center rounded-3xl text-white border-none" %> 
+      <%= f.label :email, class: "text-white font-semibold text-left" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "bg-carnage-main col-span-4 rounded-3xl text-white border-none" %> 
 
-      <%= f.label :password, class: "text-slate-100 font-semibold text-left" %>
+      <%= f.label :password, class: "text-white font-semibold text-left" %>
       <%= f.password_field :password, autocomplete: "current-password", class: "bg-carnage-main col-span-4 rounded-3xl text-white border-none" %>
     </div>
 

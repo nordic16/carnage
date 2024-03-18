@@ -1,34 +1,35 @@
-<h2 class="text-slate-100 font-extrabold text-6xl text-center">Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email, class: "text-slate-100 font-bold" %><br>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field py-2">
-    <%= f.label :password, class: "text-slate-100 font-bold" %><br>
-    <%= f.password_field :password, autocomplete: "new-password" %>    
-    <% if @minimum_password_length %>
-      <em class="text-slate-100">(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %>
+<div class="bg-carnage-secondary p-6 text-center font-montserrat mx-auto w-[500px] rounded-3xl">
+  <div class="mx-auto text-center flex items-center justify-center">
+    <img src="/assets/icon.png" class="w-[30px] sm:w-[60px]"></img>
+    <p class="text-white ml-4 font-bold font-montserrat text-3xl sm:text-5xl">Sign Up</p>
   </div>
   
-  <div class="field py-2">
-    <%= f.label :username, class: "text-slate-100 font-bold" %><br>
-    <%= f.text_field :username %>    
-  </div>
+  <%= render 'devise/shared/error_messages', resources: resource %>
 
-  <div class="field">
-    <%= f.label :password_confirmation, class: "text-slate-100 font-bold" %><br>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %> 
+    <div class="grid grid-cols-5 gap-4 mt-4 items-center">
+      <%= f.label :email, class: "text-white font-semibold text-left" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "bg-carnage-main col-span-4 rounded-3xl text-white border-none" %>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+      <%= f.label :password, class: "text-white font-semibold text-left" %>
+      <%= f.password_field :password, autocomplete: "new-password", class: "new-password bg-carnage-main col-span-4 rounded-3xl text-white border-none" %>    
+    
+      <%= f.label :username, class: "text-white font-semibold text-left" %>
+      <%= f.text_field :username, class: "bg-carnage-main col-span-4 rounded-3xl text-white border-none" %>    
 
-<%= render "devise/shared/links" %>
+      <%= f.label :Confirm, class: "text-white font-semibold text-left" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "bg-carnage-main col-span-4 rounded-3xl text-white border-none" %>
+    </div>
+
+    <div class="bg-carnage-main mt-4 text-white font-semibold rounded-lg p-4 text-left">
+      <div class="flex gap-1">
+        <p>Already have an account?</p>
+        <%= link_to "Sign in!", new_user_session_path, class: "text-carnage-red hover:text-carnage-red-pressed" %>
+      </div>
+    </div>
+    
+    <%= f.submit "Sign up", class: "mt-10 rounded-3xl w-full hover:bg-carnage-red-pressed font-semibold transition ease-in-out py-2 w-44 text-center text-white bg-carnage-red text-lg" %>
+
+  <% end %>
+
+</div>
