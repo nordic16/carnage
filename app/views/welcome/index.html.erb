@@ -6,7 +6,7 @@
     <br>
     <div class="mx-auto justify-center flex gap-5 sm:gap-10 font-montserrat font-semibold">
       <% if user_signed_in? %>
-        <%= link_to "New Workout", new_workout_path, class: "rounded-3xl hover:bg-carnage-red-pressed transition ease-in-out py-2 w-44 text-center text-white bg-carnage-red text-lg" %>
+        <%= link_to "New Workout", new_workout_path, class: "rounded-3xl hover:bg-carnage-red-pressed transition ease-in-out py-2 px-8 text-center text-white bg-carnage-red text-lg" %>
         <%= link_to "Dashboard", logbook_path(id: current_user.id), class: "rounded-3xl py-2 w-44 text-center hover:bg-carnage-secondary-pressed transition ease-in-out text-white bg-carnage-secondary text-lg" %>
       
       <% else %>
