@@ -1,16 +1,17 @@
 <%= turbo_frame_tag "new_workout" do %>
 <div class="mx-auto p-4 mx-auto font-montserrat text-center">
-  <p class="text-4xl font-extrabold text-slate-100 mb-3">New workout</p>
+  <p class="text-3xl font-bold text-slate-100 mb-3">New workout</p>
   
     <%= form_with model: @workout do |form|  %>      
-      <p class="text-slate-100 text-xl font-bold">Title</p>
-      <%= form.text_field :title, class: "text-3xl font-bold text-slate-100 bg-zinc-900 rounded-2xl" %><br>
+      <p class="text-slate-100 text-xl font-semibold mb-1">Title</p>
+      <%= form.text_field :title, class: "text-lg font-semibold text-white bg-carnage-main border-none rounded-3xl" %><br>
 
-      <p class="text-slate-100 text-xl mt-3 font-bold">Description</p>
-      <%= form.text_field :description, class: "text-3xl font-bold text-slate-100 bg-zinc-900 rounded-2xl" %><br> 
+      <p class="text-slate-100 text-xl mt-3 font-semibold mb-1">Description</p>
+      <%= form.text_field :description, class: "text-lg font-semibold text-white bg-carnage-main border-none rounded-3xl" %><br> 
 
 
-      <%= form.submit class: "bg-red-500 text-xl font-bold text-slate-100 mt-9 p-2 rounded-lg" %>
+      <%= form.submit class: "mt-6 rounded-3xl font-semibold hover:bg-carnage-red-pressed transition ease-in-out py-2 px-8 
+                text-center text-white bg-carnage-red" %>
 
     <% end %>
 </div>
