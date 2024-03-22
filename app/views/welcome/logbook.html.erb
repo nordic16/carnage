@@ -8,19 +8,8 @@
 <div class="mx-2 text-white bg-carnage-secondary p-6 font-montserrat mt-2 rounded-3xl">
   <div class="overflow-auto max-h-44">
     <% if @workouts.count > 0 %>
-      <% @workouts.each do |workout| %>
-        <% if current_user.id == workout.user_id %>
-          <div class="flex justify-between p-1">
-            <%= link_to workout.title, edit_workout_path(workout.id), class: "text-2xl font-semibold" %>
-            <%= button_to "Remove", workout_path(workout.id), method: :delete, class: "rounded-3xl font-semibold hover:bg-carnage-red-pressed transition ease-in-out py-2 px-8 
-            text-center text-white bg-carnage-red text-sm" %>
-          </div>
-
-        <% else %>
-          <%= link_to workout.title, workout_path(workout.id), class: "text-2xl" %>
-        <% end %>
-        <p class="inline-flex"> (<%= workout.created_at.strftime("%d/%m/%Y") %>)</p>
-        <br>
+      <%= turbo_frame_tag "workouts" do %>
+        <%= render partial: "workouts/workout", collection: @workouts %>
       <% end %>
     <% else %>
       <p class="font-bold text-2xl">No workouts here!</p>
@@ -29,11 +18,13 @@
   </div>
 
   <% if @user == current_user %>
-    <div class="inline-flex align-bottom gap-3 mt-3 border-t-4 border-carnage-red w-full">
-    <!--<button class="bg-red-300 text-slate-100 text-center p-1 rounded-xl">See more</button> -->
-      <%= link_to "New workout", new_workout_path, class: "mt-6 rounded-3xl font-semibold hover:bg-carnage-secondary-pressed transition ease-in-out py-2 px-8 
-            text-center text-white bg-carnage-secondary" %>
-    </div>
+    <%= turbo_frame_tag "new_workout" do %>
+      <div class="inline-flex align-bottom gap-3 mt-3 border-t-4 border-carnage-red w-full">
+      <!--<button class="bg-red-300 text-slate-100 text-center p-1 rounded-xl">See more</button> -->
+        <%= link_to "New workout", new_workout_path, class: "mt-6 rounded-3xl font-semibold hover:bg-carnage-secondary-pressed transition ease-in-out py-2 px-8 
+              text-center text-white bg-carnage-secondary" %>
+      </div>
+    <% end %>
   <% end %>
 </div>
 </div>

@@ -7,9 +7,11 @@ class WorkoutsController < ApplicationController
   def destroy
     # This is needed in order to circumvent errors.
     @workout.exercises.map { |e| e.exercise_sets.destroy_all }
-    @workout.destroy
-
-    redirect_to workouts_path
+    if @workout.destroy
+      respond_to do |format|
+        format.html { redirect_to logbook_path(id: params[:user_id]) }
+      end
+    end
   end
 
   def new
@@ -19,7 +21,12 @@ class WorkoutsController < ApplicationController
 
   def create
     @workout = current_user.workouts.new(workout_params)
-    if @workout.save then redirect_to edit_workout_path(@workout) end
+    if @workout.save
+      respond_to do |format|        
+        format.turbo_stream {render turbo_stream: turbo_stream.append("workouts", partial: "workouts/workout", locals: {workout: @workout})}
+        format.html { redirect_back(fallback_location: '/') }
+      end
+    end
   end
 
   def show
