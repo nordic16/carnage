@@ -21,12 +21,7 @@ class WorkoutsController < ApplicationController
 
   def create
     @workout = current_user.workouts.new(workout_params)
-    if @workout.save
-      respond_to do |format|        
-        format.turbo_stream {render turbo_stream: turbo_stream.append("workouts", partial: "workouts/workout", locals: {workout: @workout})}
-        format.html { redirect_back(fallback_location: '/') }
-      end
-    end
+    if @workout.save then redirect_back(fallback_location: '/') end
   end
 
   def show
