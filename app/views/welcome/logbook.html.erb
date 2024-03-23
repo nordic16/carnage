@@ -12,7 +12,7 @@
         <% if @workouts.count > 0 %>
           <%= render partial: "workouts/workout", collection: @workouts %>
         <% else %>
-          <p class="font-bold text-2xl">No workouts here!</p>
+          <p class="font-semibold text-2xl">No workouts found!</p>
           <p class="ml-2">Added workouts will appear here.</p>
         <% end %>
       <% end %>

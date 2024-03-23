@@ -5,10 +5,14 @@ class WorkoutsController < ApplicationController
   end
 
   def destroy
+    id = @workout.id
+    
     # This is needed in order to circumvent errors.
     @workout.exercises.map { |e| e.exercise_sets.destroy_all }
+
     if @workout.destroy
       respond_to do |format|
+        format.turbo_stream { render turbo_stream: turbo_stream.remove("workout_#{id}")}
         format.html { redirect_to logbook_path(id: params[:user_id]) }
       end
     end
