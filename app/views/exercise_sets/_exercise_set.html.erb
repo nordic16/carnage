@@ -1,7 +1,7 @@
 <%= turbo_frame_tag dom_id(exercise_set, :edit), class: "contents" do %>
-  <div class="flex flex-row justify-around items-center">
+  <div class="flex flex-row justify-evenly md:justify-around items-center text-sm">
     <div class="flex gap-2 items-center">
-      <i class="fa fa-skull text-sm"></i>
+      <i class="fa fa-skull"></i>
       <p><%= exercise_set.intensity %></p>
     </div>
 
