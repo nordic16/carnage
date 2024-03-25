@@ -4,7 +4,7 @@
       <p class="font-semibold"><%= exercise.name %></p>
 
       <div class="gap-5 flex">
-        <%= button_to "x", workout_remove_exercise_path(exercise_id: exercise.id, workout_id: params[:workout_id] || params[:id]), method: :delete, 
+        <%= button_to "X", workout_remove_exercise_path(exercise_id: exercise.id, workout_id: params[:workout_id] || params[:id]), method: :delete, 
           class: "rounded-3xl font-semibold transition ease-in-out 
                 text-center text-white hover:text-carnage-red-pressed" %> 
       </div>

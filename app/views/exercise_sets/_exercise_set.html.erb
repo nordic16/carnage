@@ -15,9 +15,11 @@
       <p><%= exercise_set.reps %></p>
     </div>    
     
-    <div class="flex gap-4 p-2 rounded-xl">
-      <%= link_to "Edit", edit_exercise_exercise_set_path(id: exercise_set.id, exercise_id: exercise_set.exercise.id), class: "p-2 outline outline-4 outline-teal-400 text-teal-400 hover:text-teal-300 font-bold rounded-xl text-sm" %>
-      <%= button_to "- Remove", exercise_exercise_set_path(id: exercise_set.id, exercise_id: exercise_set.exercise.id), method: :delete, class: "text-sm p-2 outline outline-4 outline-red-400 text-red-400 hover:text-red-300 rounded-xl font-bold" %>
+    <div class="flex gap-4 p-2 rounded-xl items-center">
+      <%= link_to "Edit", edit_exercise_exercise_set_path(id: exercise_set.id, exercise_id: exercise_set.exercise.id), class: "rounded-3xl font-semibold hover:bg-carnage-red-pressed transition ease-in-out py-2 px-8 
+              text-center text-white bg-carnage-red text-sm" %>
+      <%= button_to "X", exercise_exercise_set_path(id: exercise_set.id, exercise_id: exercise_set.exercise.id), method: :delete, class: "rounded-3xl font-semibold transition ease-in-out 
+                text-center text-white hover:text-carnage-red-pressed" %>
     </div>
   </div>
 <% end %>
