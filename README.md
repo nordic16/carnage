@@ -9,3 +9,6 @@ Carnage is a simple yet **reliable** workout tracker written by someone who's ob
 
 It has all the features most workout trackers do, except none of them are or will be blocked behind a paywall! 
 
+# When will the project be complete?
+
+I don't know. I started this way back when my experience with Rails was nearly 0 (still is :skull:), so not only will I have to finish the project, but I will also need to rewrite a bunch of old code.
