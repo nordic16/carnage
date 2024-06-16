@@ -71,5 +71,5 @@ gem "tailwindcss-rails", "~> 2.6"
 gem "devise"
 gem "view_component"
 
-gem "faker", "~> 3.3"
+gem "faker", "~> 3.4"
 gem "htmlbeautifier"
