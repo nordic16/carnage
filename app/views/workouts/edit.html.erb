@@ -6,8 +6,9 @@
 </div>
 
 <div class="px-4">
-  <%= turbo_frame_tag "exercises", class: "grid gap-4 grid-cols-1 md:grid-cols-2" do %>     
+  <%= turbo_frame_tag "exercises", class: "flex flex-wrap" do %>     
     <% @workout.exercises.each do |ex| %>
+
       <%= render ex, is_workout: true %>
     <% end %>
   <% end %>

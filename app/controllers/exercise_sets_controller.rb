@@ -18,7 +18,7 @@ class ExerciseSetsController < ApplicationController
   end
 
   def update
-    @set = ExerciseSet.find(params[:id])
+    @set = ExerciseSet.find(params[:set_id])
 
     if @set.update(exercise_sets_params)
       render @set
