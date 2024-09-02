@@ -9,7 +9,7 @@
   <%= turbo_frame_tag "new_workout" do %>
     <div class="overflow-auto max-h-44">
       <%= turbo_frame_tag "workouts" do %>
-        <% if @workouts.count > 0 %>
+        <% if current_user.workouts.count > 0 %>
           <%= render partial: "workouts/workout", collection: @workouts %>
         <% else %>
           <p class="font-semibold text-2xl">No workouts found!</p>
@@ -20,7 +20,7 @@
     <% if @user == current_user %>
         <div class="inline-flex align-bottom gap-3 mt-3 border-t-4 border-carnage-red w-full">
         <!--<button class="bg-red-300 text-slate-100 text-center p-1 rounded-xl">See more</button> -->
-          <%= link_to "New workout", new_workout_path, class: "mt-6 rounded-3xl font-semibold hover:bg-carnage-secondary-pressed transition ease-in-out py-2 px-8 
+          <%= link_to "New workout", new_workout_path, class: "mt-6 rounded-3xl font-semibold hover:bg-carnage-secondary-pressed transition ease-in-out py-2 px-8
                 text-center text-white bg-carnage-secondary" %>
         </div>
     <% end %>

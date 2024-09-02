@@ -11,7 +11,7 @@
 
         <%= form.label :emphasis, class: "font-bold mr-2" %>
         <%= form.text_field :emphasis, class: "rounded-2xl mb-2 bg-zinc-900" %>
-  
+
         <%= render DialogComponent.new(title: "Edit Muscle Groups", close_button_text: "Save changes") do |d| %>
           <%= form.collection_check_boxes :muscle_group_ids, MuscleGroup.all, :id, :name, {multiple: true}, {class: "text-blue-500"} do |f| %>
             <div class="flex justify-between text-slate-100">
