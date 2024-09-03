@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/logbook', to: "welcome#logbook", as: "logbook"
 
   resources :workouts do
-    delete '/edit/removeExercise', to: "workouts#remove_exercise", as: "remove_exercise" 
+    delete '/edit/removeExercise', to: "workouts#remove_exercise", as: "remove_exercise"
     patch 'edit/addExercise', to: "workouts#add_exercise", as: "add_exercise"
   end
 
