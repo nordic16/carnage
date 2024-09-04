@@ -9,7 +9,7 @@ class WelcomeController < ApplicationController
   end
 
   def logbook
-    @user = User.find(params[:id])
+    @user = params[:id] ? User.find(params[:id]) : current_user
     @workouts = @user.workouts
 
   end

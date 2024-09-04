@@ -3,7 +3,7 @@ class ExerciseSet < ApplicationRecord
     belongs_to :workout
 
     validates :weight, :reps, :intensity, presence: true
-    
+
     validates :weight, numericality: true
     validates :reps, numericality: { only_integer: true }
     validates :intensity, numericality: { in: 1..10 }

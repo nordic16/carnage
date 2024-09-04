@@ -6,7 +6,7 @@ class WorkoutsController < ApplicationController
 
   def destroy
     id = @workout.id
-    
+
     # This is needed in order to circumvent errors.
     @workout.exercises.map { |e| e.exercise_sets.destroy_all }
 
@@ -16,11 +16,6 @@ class WorkoutsController < ApplicationController
         format.html { redirect_to logbook_path(id: params[:user_id]) }
       end
     end
-  end
-
-  def new
-    @exercises = Exercise.all
-    @workout = Workout.new
   end
 
   def create
@@ -33,20 +28,20 @@ class WorkoutsController < ApplicationController
   end
 
   def edit
-    @workout.exercises.each do |ex| 
+    @workout.exercises.each do |ex|
       ex.exercise_sets.build
     end
-    
+
     if current_user != @workout.user then not_found!("Not found") end
   end
 
   def update
     if @workout.update(workout_params)
       # redirect_to workouts_path
-      @exercises = params[:workout][:exercise_ids].map {|ex| Exercise.find(ex)}
+      @exercises = params[:workout][:exercise_ids].map { |ex| Exercise.find(ex)}
 
       # exercise added
-      respond_to do |format| 
+      respond_to do |format|
         format.html { redirect_to edit_workout_path(params[:id]) }
         format.turbo_stream
       end
