@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class NavbarFieldComponent < ViewComponent::Base
-  def initialize(icon:, title: "", active: true, href:)
-    @icon = icon
+  def initialize(title: "", active: true, href:)
     @title = title
     @active = active
     @href = href
