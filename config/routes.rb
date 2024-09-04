@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get '/logbook', to: "welcome#logbook", as: "logbook"
 
-  resources :workouts do
+  resources :workouts, only: [:destroy, :create, :update, :view, :edit] do
     delete '/edit/removeExercise', to: "workouts#remove_exercise", as: "remove_exercise"
     patch 'edit/addExercise', to: "workouts#add_exercise", as: "add_exercise"
   end

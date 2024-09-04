@@ -18,16 +18,6 @@ class WorkoutsController < ApplicationController
     end
   end
 
-  def new
-    @exercises = Exercise.all
-    @workout = Workout.new(title: 'new workout...', user_id: current_user.id, duration: 0, description: '')
-    if @workout.save
-      redirect_to edit_workout_path(id: @workout.id)
-    end
-
-
-  end
-
   def create
     @workout = current_user.workouts.new(workout_params)
     if @workout.save then redirect_back(fallback_location: '/') end
