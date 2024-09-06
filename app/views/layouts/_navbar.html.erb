@@ -10,7 +10,7 @@
       <div class="flex gap-5 sm:gap-10">
           <%= render NavbarFieldComponent.new(title: "settings", href: '/') %>
 
-          <%= render NavbarFieldComponent.new(title: "sign out", href: '/') %>
+          <%= button_to "sign out", destroy_user_session_path, method: :delete, class: "font-montserrat text-lg text-carnage-red ease-in-out transition hover:text-carnage-red-pressed font-semibold ml-2" %>
       </div>
     <% else %>
       <%= link_to image_tag("logo-button.png", width: 45), '/' %>
