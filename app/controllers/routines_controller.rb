@@ -3,7 +3,7 @@ class RoutinesController < ApplicationController
 
   # GET /routines or /routines.json
   def index
-    @routines = Routine.all
+    @routines = current_user.routines
   end
 
   # GET /routines/1 or /routines/1.json
@@ -65,6 +65,6 @@ class RoutinesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def routine_params
-      params.fetch(:routine, {})
+      params.require(:routine).permit(:id)
     end
 end

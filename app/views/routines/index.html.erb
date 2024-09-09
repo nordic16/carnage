@@ -1,14 +1,15 @@
-<div class="w-full">
+<div class="md:container">
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Routines</h1>
-    <%= link_to "New routine", new_routine_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+  <div class="mx-auto text-center flex items-center justify-center mt-5 sm:mt-20">
+    <img src="/assets/icon.png" class="w-[30px] sm:w-[80px]"></img>
+    <p class="text-white ml-4 font-bold font-montserrat uppercase text-3xl sm:text-7xl">Routines</p>
   </div>
 
+  <%= link_to "New routine", new_routine_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium" %>
+
   <div id="routines" class="min-w-full">
-    <%= render @routines %>
   </div>
 </div>
