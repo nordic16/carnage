@@ -75,3 +75,5 @@ gem "view_component"
 
 gem "faker", "~> 3.4"
 gem "htmlbeautifier"
+
+gem "devise-api", "~> 0.1.3"
