@@ -1,20 +1,20 @@
 <nav class="bg-carnage-secondary h-12 mb-10 mt-4 mx-4 rounded-full">
-  <div class="flex h-full justify-between px-10 items-center">
+  <div class="flex h-full justify-between md:px-10 px-4 items-center">
     <% if user_signed_in? %>
-      <div class="flex gap-5 sm:gap-10">
-        <%= render NavbarFieldComponent.new(title: "home", href: '/') %>
-        <%= render NavbarFieldComponent.new(title: "logbook", href: logbook_path) %>
-        <%= render NavbarFieldComponent.new(title: "routines", href: routines_path) %>
+      <div class="flex gap-4 sm:gap-10">
+        <%= link_to "home", '/', class: "md:text-3xl hover:text-carnage-red-pressed material-symbols-outlined text-carnage-red" %>
+        <%= link_to "list_alt", logbook_path, class: "md:text-3xl hover:text-carnage-red-pressed material-symbols-outlined text-carnage-red" %>
+        <%= link_to "fitness_center", routines_path, class: "md:text-3xl hover:text-carnage-red-pressed material-symbols-outlined text-carnage-red" %>
 
       </div>
       <div class="flex gap-5 sm:gap-10">
-          <%= render NavbarFieldComponent.new(title: "settings", href: '/') %>
+          <%= link_to "settings", routines_path, class: "md:text-3xl hover:text-carnage-red-pressed material-symbols-outlined text-carnage-red" %>
 
-          <%= button_to "sign out", destroy_user_session_path, method: :delete, class: "font-montserrat text-lg text-carnage-red ease-in-out transition hover:text-carnage-red-pressed font-semibold ml-2" %>
+          <%= button_to "logout", destroy_user_session_path, method: :delete, class: "md:text-3xl hover:text-carnage-red-pressed material-symbols-outlined text-carnage-red" %>
       </div>
     <% else %>
-      <%= link_to image_tag("logo-button.png", width: 45), '/' %>
-      <%= link_to image_tag("user-button.png", width: 45), new_user_session_path %>
+      <%= link_to "home", '/', class: "md:text-3xl hover:text-carnage-red-pressed material-symbols-outlined text-carnage-red" %>
+      <%= link_to "person", new_user_session_path, class: "md:text-3xl hover:text-carnage-red-pressed material-symbols-outlined text-carnage-red" %>
     <% end %>
   </div>
 </nav>
