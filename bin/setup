@@ -8,6 +8,10 @@ def system!(*args)
   system(*args, exception: true)
 end
 
+def command_exists?(command)
+  system("command -v #{command} > /dev/null 2>&1")
+end
+
 FileUtils.chdir APP_ROOT do
   # This script is a way to set up or update your development environment automatically.
   # This script is idempotent, so that you can run it at any time and get an expectable outcome.
@@ -31,3 +35,26 @@ FileUtils.chdir APP_ROOT do
   puts "\n== Restarting application server =="
   system! "bin/rails restart"
 end
+
+unless command_exists?('brew')
+  puts "Homebrew is not installed. Please install Homebrew first."
+  exit 1
+end
+
+unless command_exists?('puma-dev')
+  puts "Installing puma-dev..."
+  system('brew install puma/puma/puma-dev')
+
+  puts "Running puma-dev setup..."
+  system('sudo puma-dev -setup')
+
+  puts "Installing puma-dev DNS settings..."
+  system('puma-dev -install')
+end
+
+# Link the current app to puma-dev
+puts "\n== Configuring Puma-dev to host https://app_name.test =="
+app_name = File.basename(APP_ROOT)
+
+system! "puma-dev link -n #{app_name}"
+puts "puma-dev setup complete for #{app_name}.test"
