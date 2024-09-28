@@ -1,7 +1,7 @@
 <div class="mx-auto md:container">
-  <h1 class="font-bold text-4xl">New routine</h1>
-
+    <div class="mx-auto text-center flex items-center justify-center mt-5 sm:mt-20">
+      <img src="/assets/icon.png" class="w-[30px] sm:w-[80px]"></img>
+      <p class="text-white ml-4 font-bold font-montserrat uppercase text-3xl sm:text-7xl">New Routine</p>
+    </div>
   <%= render "form", routine: @routine %>
-
-  <%= link_to "Back to routines", routines_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
 </div>

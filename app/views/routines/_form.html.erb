@@ -10,15 +10,14 @@
     </div>
   <% end %>
 
-  <div class="grid items-center mt-4">
-      <%= form.label :name, class: "text-white" %>
-      <%= form.text_field :name, class: "bg-carnage-secondary rounded-lg text-white mb-4" %>
-
-      <%= form.label :description, class: "text-white" %>
-      <%= form.text_field :description, class: "bg-carnage-secondary rounded-lg text-white mb-4" %>
+  <div class="grid w-full">
+        <%= form.text_field :name, placeholder: "Routine title...", class: "border-none bg-carnage-secondary rounded-lg text-white text-4xl mb-4" %>
+        <%= form.text_field :description, placeholder: "Workout description...", class: "border-none bg-carnage-secondary rounded-lg text-white mb-4" %>
   </div>
 
-  <div class="inline">
-    <%= form.submit "+ Add Routine", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  <div class="flex justify-center gap-4">
+    <%= form.submit "Save Changes", class: "w-auto rounded-3xl py-2 px-8 bg-carnage-red text-white font-medium cursor-pointer" %>
+    <%= link_to "Back to routines", routines_path, class: "w-auto ml-2 text-white rounded-3xl py-2 px-8 bg-blue-500 inline-block font-medium" %>
   </div>
+
 <% end %>
