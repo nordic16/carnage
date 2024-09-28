@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_19_094634) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_21_141746) do
   create_table "devise_api_tokens", force: :cascade do |t|
     t.string "resource_owner_type", null: false
     t.bigint "resource_owner_id", null: false
@@ -88,10 +88,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_19_094634) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username"
-    t.string "Routine"
-    t.string "User"
     t.integer "height"
     t.integer "weight"
+    t.integer "age"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

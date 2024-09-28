@@ -1,5 +1,6 @@
 class RoutinesController < ApplicationController
   before_action :set_routine, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /routines or /routines.json
   def index
@@ -12,7 +13,7 @@ class RoutinesController < ApplicationController
 
   # GET /routines/new
   def new
-    @routine = Routine.new
+    @routine = current_user.routines.new
   end
 
   # GET /routines/1/edit
@@ -21,7 +22,7 @@ class RoutinesController < ApplicationController
 
   # POST /routines or /routines.json
   def create
-    @routine = Routine.new(routine_params)
+    @routine = current_user.routines.new(routine_params)
 
     respond_to do |format|
       if @routine.save
@@ -65,6 +66,6 @@ class RoutinesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def routine_params
-      params.require(:routine).permit(:id)
+      params.require(:routine).permit(:name, :description, :user_id)
     end
 end

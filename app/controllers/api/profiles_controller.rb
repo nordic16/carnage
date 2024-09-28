@@ -1,10 +1,18 @@
 class Api::ProfilesController < ApplicationController
-  skip_before_action :verify_authenticity_token, raise: false
   before_action :authenticate_devise_api_token!
 
-  def show
-    user = User.find(params[:id])
-    render json: user
+  def index
+    render json: current_devise_api_user
+  end
+
+  def update
+
+  end
+
+  def create
+  end
+
+  def destroy
   end
 
 end

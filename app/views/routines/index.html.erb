@@ -8,9 +8,13 @@
     <p class="text-white ml-4 font-bold font-montserrat uppercase text-3xl sm:text-7xl">Routines</p>
   </div>
 
+
+  <div class="text-center p-4">
+      <%= link_to "New routine", new_routine_path, class: "rounded-3xl hover:bg-carnage-red-pressed transition ease-in-out py-2 px-8 text-white bg-carnage-red text-lg" %>
+  </div>
+
   <div class="mx-2 text-white bg-carnage-secondary p-6 font-montserrat mt-2 rounded-3xl">
       <%= render partial: 'routines/routine', collection: @routines %>
-      <%= link_to "New routine", new_routine_path, class: "rounded-3xl hover:bg-carnage-red-pressed transition ease-in-out py-2 px-8 text-center text-white bg-carnage-red text-lg" %>
   </div>
 
   <div id="routines" class="min-w-full">

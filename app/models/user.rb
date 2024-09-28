@@ -4,6 +4,7 @@ class User < ApplicationRecord
   validates :username, presence: true
   validates :weight, comparison: { greater_than: 0 }, allow_blank: true
   validates :height, comparison: { greater_than: 0 }, allow_blank: true
+  validates :age, comparison: { greater_than: 0 }, allow_blank: true
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
