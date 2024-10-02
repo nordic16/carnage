@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
+    resources :routines, only: [:index, :create, :update, :destroy]
     resources :profiles, only: [:index, :show]
   end
 
