@@ -13,11 +13,13 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="bg-carnage-main">
+  <body class="bg-carnage-main min-h-screen relative">
     <%= render "layouts/navbar" %>
- <main class="mx-auto">
+ <main>
     <%= render 'layouts/flash', class:"align-right relative" %>
+    <%= turbo_frame_tag "sidebar" %>
     <%= yield %>
+    <%= render 'layouts/footer' %>
   </main>
   </body>
 </html>

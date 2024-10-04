@@ -18,6 +18,7 @@ class RoutinesController < ApplicationController
 
   # GET /routines/1/edit
   def edit
+    @exercise_sets = @routine.exercise_sets
   end
 
   # POST /routines or /routines.json
@@ -66,6 +67,6 @@ class RoutinesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def routine_params
-      params.require(:routine).permit(:name, :description, :user_id)
+      params.require(:routine).permit(:name, :description, :user_id, exercise_sets_ids: [])
     end
 end

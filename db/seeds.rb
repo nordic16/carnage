@@ -15,6 +15,9 @@ upper_back = MuscleGroup.find_or_create_by!(name: "Upper Back")
 lats = MuscleGroup.find_or_create_by!(name: "Lats")
 delts = MuscleGroup.find_or_create_by!(name: "Delts")
 chest = MuscleGroup.find_or_create_by!(name: "Chest")
+hamstrings = MuscleGroup.find_or_create_by!(name: "Hamstring")
+glutes = MuscleGroup.find_or_create_by!(name: "Glutes")
+
 
 # Exercises from my pull day lmfao
 Exercise.create!([{
@@ -78,6 +81,14 @@ Exercise.create!([{
     description: "",
     emphasis: "Costal Pec, Sternal Pec",
     muscle_groups: [chest],
+    user_id: 1,
+    exerciseType: Exercise::WEIGHT_REPS
+  },
+  {
+    name: "Stiff Leg Deadlift",
+    description: "",
+    emphasis: "Hamstrings",
+    muscle_groups: [hamstrings, glutes],
     user_id: 1,
     exerciseType: Exercise::WEIGHT_REPS
   }

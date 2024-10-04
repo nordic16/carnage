@@ -1,15 +1,17 @@
 <%= turbo_frame_tag dom_id(exercise, :edit) do %>
-  <div class="bg-carnage-secondary text-white mb-2 p-4 rounded-2xl font-montserrat"> 
+  <div class="bg-carnage-secondary text-white mb-2 p-4 rounded-2xl font-montserrat">
     <div class="flex justify-between">    <!--Image in the future-->
       <p class="font-semibold"><%= exercise.name %></p>
 
-      <div class="gap-5 flex">
-        <%= button_to "X", workout_remove_exercise_path(exercise_id: exercise.id, workout_id: params[:workout_id] || params[:id]), method: :delete, 
-          class: "rounded-3xl font-semibold transition ease-in-out 
-                text-center text-white hover:text-carnage-red-pressed" %> 
-      </div>
+      <% if is_workout %>
+        <div class="gap-5 flex">
+            <%= button_to "X", workout_remove_exercise_path(exercise_id: exercise.id, workout_id: params[:workout_id] || params[:id]), method: :delete,
+            class: "rounded-3xl font-semibold transition ease-in-out
+                    text-center text-white hover:text-carnage-red-pressed" %>
+        </div>
+      <% end %>
     </div>
-    
+
     <% exercise.muscle_groups.each do |mg| %>
       <p class="ml-2 text-sm"><%= mg.name %></p>
     <% end %>
@@ -27,10 +29,10 @@
               <% end %>
             <% end %>
 
-          <%= button_to "+ Add set", exercise_exercise_sets_path(exercise_id: exercise.id, workout_id: params[:workout_id] || params[:id]), 
-            class: "mt-5 rounded-3xl font-semibold hover:bg-carnage-red-pressed transition ease-in-out py-2 px-8 
+          <%= button_to "+ Add set", exercise_exercise_sets_path(exercise_id: exercise.id, workout_id: params[:workout_id] || params[:id]),
+            class: "mt-5 rounded-3xl font-semibold hover:bg-carnage-red-pressed transition ease-in-out py-2 px-8
                 text-center text-white text-sm bg-carnage-red" %>
-          <% end %>    
+          <% end %>
 
       <% else %>
         <%= yield %>
